@@ -201,7 +201,7 @@ button {
 }
 
 .layout_padding {
-    padding-top: 100px;
+    padding-top: 20px;
     padding-bottom: 0px;
 }
 
@@ -254,9 +254,10 @@ button {
     color: #fc95c4;
 }
 
-.navbar-brand {
-    margin: 0px;
-    float: right;
+.navbar-brand img {
+    margin: 0;
+    padding: 0;
+    display: block;
 }
 
 .navbar {
@@ -287,14 +288,12 @@ button {
 
 
 /* header section end */
-
+ 
 
 /* banner section start */
 
 .banner_section {
-    width: 100%;
-    float: left;
-    padding: 90px 0px 145px 0px;
+    padding: 40px 0 60px 0;
 }
 
 .banner_taital {
@@ -964,8 +963,8 @@ textarea#comment::placeholder {
     float: left;
     font-size: 20px;
     color: #ffffff;
-    font-weight: 500;
-    margin-top: 130px;
+    font-weight: 40;
+    margin-top: 30px;
 }
 
 .form-group {
@@ -1054,4 +1053,11 @@ textarea#comment.update_mail::placeholder {
 
 .margin_top90 {
     margin-top: 90px;
+	}
+	
+	.navbar,
+.header_section,
+.navbar-brand img {
+    margin: 0 !important;
+    padding: 0 !important;
 }

@@ -155,7 +155,7 @@ img {
 }
 
 .btn-custom {
-    margin-top: 20px;
+    margin-top: 10px;
     background-color: transparent !important;
     border: 2px solid #ddd;
     padding: 12px 40px;
@@ -219,6 +219,7 @@ button {
     height: auto;
     background-size: 100%;
     background-repeat: no-repeat;
+		padding-top: 5px;
 }
 
 .header_bg {
@@ -261,7 +262,7 @@ button {
 }
 
 .navbar {
-    padding: 15px 0px;
+    padding: 10px 0px;
 }
 
 .login_bt {}
@@ -293,7 +294,9 @@ button {
 /* banner section start */
 
 .banner_section {
-    padding: 40px 0 60px 0;
+	min-height: 700px;
+	max-height: 700px;
+	padding: 20px 0 60px 0;
 }
 
 .banner_taital {
@@ -1055,9 +1058,3 @@ textarea#comment.update_mail::placeholder {
     margin-top: 90px;
 	}
 	
-	.navbar,
-.header_section,
-.navbar-brand img {
-    margin: 0 !important;
-    padding: 0 !important;
-}

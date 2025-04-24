@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <!-- basic -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!-- mobile metas -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+      <!-- site metas -->
+      <title>Lakeside Picnic - Romney's Kendal Mint Cake</title>
+      <meta name="keywords" content="">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <!-- bootstrap css -->
+      <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+      <!-- style css -->
+      <link rel="stylesheet" type="text/css" href="css/style.css">
+      <!-- Responsive-->
+      <link rel="stylesheet" href="css/responsive.css">
+      <!-- fevicon -->
+      <link rel="icon" href="images/fevicon.png" type="image/gif"/>
+      <!-- font css -->
+      <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
+      <!-- Scrollbar Custom CSS -->
+      <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+      <!-- Tweaks for older IEs-->
+      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+	</head>
+	<body> 
+  <style>
+    body {
+      margin: 0;
+      background: #111;
+      font-family: 'Arial', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: start;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .fridge-container {
+      width: 90vw;
+      max-width: 1000px;
+      background: #fff;
+      border: 10px solid #d10000;
+      border-radius: 10px;
+      display: flex;
+      box-shadow: 0 0 30px rgba(255, 0, 0, 0.5);
+      margin-bottom: 40px;
+    }
+
+    .door {
+      width: 50%;
+      background: #f4f4f4;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      box-sizing: border-box;
+    }
+
+    .shelf {
+      flex: 1;
+      margin: 10px 0;
+      background: #e6e6e6;
+      border: 2px solid #ccc;
+      border-radius: 5px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 10px;
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .drink {
+      width: 70px;
+      height: 150px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      position: relative;
+    }
+
+    .drink img {
+      max-height: 100%;
+      max-width: 100%;
+      object-fit: contain;
+    }
+
+    /* Crisp Baskets and Sweet Shelves */
+    .snack-section {
+      width: 90vw;
+      max-width: 1000px;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .basket, .sweet-shelf {
+      flex: 1;
+      background: #333;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .snack-title {
+      color: #fff;
+      font-weight: bold;
+      margin-bottom: 10px;
+      text-align: center;
+      width: 100%;
+    }
+
+    .snack {
+      width: 60px;
+      height: 60px;
+    }
+
+    .snack img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+  </style>
+<body>
+
+  <!-- Fridge Section -->
+  <div class="fridge-container">
+    <div class="door">
+      <div class="shelf">
+        <div class="drink"><img src="your-cocacola.png" alt="Bottle" /></div>
+        <div class="drink"><img src="your-cocacola.png" alt="Can" /></div>
+        <div class="drink"><img src="your-cocacola.png" alt="Water" /></div>
+      </div>
+      <div class="shelf">
+        <div class="drink"><img src=" images/cocacola.png" alt="Bottle" /></div>
+        <div class="drink"><img src=" images/cocacola.png" alt="Can" /></div>
+        <div class="drink"><img src=" images/cocacola.png" alt="Water" /></div>
+      </div>
+      <div class="shelf">
+        <div class="drink"><img src=" images/cocacola.png" alt="Bottle" /></div>
+        <div class="drink"><img src=" images/cocacola.png" alt="Can" /></div>
+        <div class="drink"><img src=" images/cocacola.png" alt="Water" /></div>
+      </div>
+    </div>
+
+    <div class="door">
+      <div class="shelf">
+        <div class="drink"><img src="images/cocacola.png" alt="Bottle" /></div>
+        <div class="drink"><img src=" images/cocacola.png" alt="Can" /></div>
+        <div class="drink"><img src=" images/cocacola.png" alt="Water" /></div>
+      </div>
+      <div class="shelf">
+        <div class="drink"><img src="your-cocacola.png" alt="Bottle" /></div>
+        <div class="drink"><img src=" images/cocacola.png" alt="Can" /></div>
+        <div class="drink"><img src=" images/cocacola.png" alt="Water" /></div>
+      </div>
+      <div class="shelf">
+        <div class="drink"><img src=" images/cocacola.png" alt="Bottle" /></div>
+        <div class="drink"><img src=" images/cocacola.png" alt="Can" /></div>
+        <div class="drink"><img src=" images/cocacola.png" alt="Water" /></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Crisps & Sweets Section -->
+  <div class="snack-section">
+    <div class="basket">
+      <div class="snack-title">Crisps £1.20</div>
+      <div class="snack"><img src=" images/cocacola.png" alt="Crisps" /></div>
+      <div class="snack"><img src=" images/cocacola.png" alt="Crisps" /></div>
+      <div class="snack"><img src=" images/cocacola.png" alt="Crisps" /></div>
+    </div>
+    <div class="sweet-shelf">
+      <div class="snack-title">Sweets</div>
+      <div class="snack"><img src="mars.png" alt="Mars" /></div>
+      <div class="snack"><img src="snickers.png" alt="Snickers" /></div>
+      <div class="snack"><img src="twix.png" alt="Twix" /></div>
+    </div>
+  </div>
+
+</body>
+</html>

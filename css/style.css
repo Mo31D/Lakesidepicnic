@@ -300,7 +300,8 @@ button {
 }
 
 .banner_taital {
-    width: 30%;
+    width: 100%;
+		white-space: normal;
     font-size: 48px;
     color: #222222;
     font-weight: bold;
@@ -316,7 +317,7 @@ button {
 .started_text {
     width: 170px;
     float: left;
-    padding-top: 20px;
+    padding-top: 10px;
 }
 
 .started_text a {
@@ -693,7 +694,7 @@ button {
 .testimonial_taital {
     width: 100%;
     float: left;
-    font-size: 40px;
+    font-size: 25px;
     color: #373736;
     font-weight: bold;
     text-align: center;

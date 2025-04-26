@@ -582,15 +582,13 @@ button {
 
 .seemore_bt {
     width: 180px;
-    margin: 0 auto;
+    margin: 50px auto 0 auto; /* margin-top 50px */
     text-align: center;
-    padding-top: 50px;
-    display: flex;
 }
 
 .seemore_bt a {
+    display: inline-block;
     width: 100%;
-    float: left;
     font-size: 16px;
     text-align: center;
     background-color: #fc95c4;
@@ -598,6 +596,7 @@ button {
     padding: 10px 0px;
     border-radius: 5px;
     font-weight: bold;
+    text-decoration: none;
 }
 
 .seemore_bt a:hover {

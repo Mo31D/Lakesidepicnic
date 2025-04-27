@@ -4,8 +4,8 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
 
 <url>
   <loc>https://www.lakesidepicnic.co.uk/</loc>
@@ -15,17 +15,17 @@
 <url>
   <loc>https://www.lakesidepicnic.co.uk/icecream.html</loc>
   <lastmod>2025-04-26T12:29:45+00:00</lastmod>
-  <priority>0.80</priority>
+  <priority>0.90</priority>
 </url>
 <url>
   <loc>https://www.lakesidepicnic.co.uk/hotdrinks.html</loc>
   <lastmod>2025-04-26T12:29:45+00:00</lastmod>
-  <priority>0.80</priority>
+  <priority>0.85</priority>
 </url>
 <url>
   <loc>https://www.lakesidepicnic.co.uk/romneys.html</loc>
   <lastmod>2025-04-26T12:29:45+00:00</lastmod>
-  <priority>0.80</priority>
+  <priority>0.85</priority>
 </url>
 <url>
   <loc>https://www.lakesidepicnic.co.uk/services.html</loc>
@@ -40,22 +40,17 @@
 <url>
   <loc>https://www.lakesidepicnic.co.uk/contact.html</loc>
   <lastmod>2025-04-26T12:29:45+00:00</lastmod>
-  <priority>0.80</priority>
+  <priority>0.60</priority>
 </url>
 <url>
   <loc>https://www.lakesidepicnic.co.uk/Icecream/thunder.html</loc>
   <lastmod>2025-04-26T12:29:45+00:00</lastmod>
-  <priority>0.80</priority>
+  <priority>0.70</priority>
 </url>
 <url>
   <loc>https://www.lakesidepicnic.co.uk/Icecream/sticky.html</loc>
   <lastmod>2025-04-26T12:29:45+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://www.lakesidepicnic.co.uk/Romneys.html</loc>
-  <lastmod>2025-04-26T12:29:45+00:00</lastmod>
-  <priority>0.64</priority>
+  <priority>0.70</priority>
 </url>
 <url>
   <loc>https://www.lakesidepicnic.co.uk/Icecream/jersey.html</loc>
@@ -152,11 +147,5 @@
   <lastmod>2025-04-26T12:29:45+00:00</lastmod>
   <priority>0.64</priority>
 </url>
-<url>
-  <loc>https://www.lakesidepicnic.co.uk/hotdrinks/Allergen.pdf</loc>
-  <lastmod>2025-04-26T12:29:45+00:00</lastmod>
-  <priority>0.51</priority>
-</url>
-
 
 </urlset>

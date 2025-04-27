@@ -1,4 +1,13 @@
+# Allow all bots to access everything
 User-agent: *
-Allow: /
+Disallow:
 
-Sitemap: https://lakesidepicnic.co.uk/sitemap.xml
+# Block specific directories (if needed)
+# Disallow: /private-directory/
+
+# Allow Googlebot (for example) to access everything
+User-agent: Googlebot
+Disallow:
+
+# Sitemap location
+Sitemap: https://www.lakesidepicnic.co.uk/sitemap.xml

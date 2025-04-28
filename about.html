@@ -1,41 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html>
+   <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <title>About Lakeside Picnic | Ambleside</title>
+  <title>About Us | Lakeside Picnic - Ambleside</title>
 
-  <meta name="description" content="Learn about the heart and story behind Lakeside Picnic, an independent shop in Ambleside built on quality, resilience, and care.">
+  <meta name="description" content="Learn about the story behind Lakeside Picnic — our passion for quality, community, and beautiful moments by Lake Windermere in Ambleside.">
+  <meta name="keywords" content="About Lakeside Picnic, Lakeside Picnic Ambleside, Lake District Cafe, Waterhead Cafe, Family Business Ambleside">
   <meta name="author" content="Mo - Lakeside Picnic">
   <link rel="canonical" href="https://www.lakesidepicnic.co.uk/about.html" />
 
-  <!-- CSS Links -->
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="css/style.css">
-  <link rel="stylesheet" href="css/responsive.css">
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
-
+  <!-- Preconnects for performance -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 
-  <style>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <!-- Style CSS -->
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <!-- Responsive CSS -->
+  <link rel="stylesheet" href="css/responsive.css">
+  <!-- Favicon -->
+  <link rel="icon" href="images/fevicon.png" type="image/png" />
+  <!-- Font CSS -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
+  <!-- Scrollbar Custom CSS -->
+  <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+  <!-- Font Awesome CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <!-- Open Graph / Facebook Sharing -->
+  <meta property="og:title" content="About Lakeside Picnic | Ambleside" />
+  <meta property="og:description" content="Discover the journey of Lakeside Picnic, a family-run spot in Ambleside celebrating great food, coffee, ice cream, and community spirit." />
+  <meta property="og:image" content="https://lakesidepicnic.co.uk/images/LP-logo.png" />
+  <meta property="og:url" content="https://www.lakesidepicnic.co.uk/about.html" />
+  <meta property="og:type" content="website" />
+
+  <!-- Twitter Card Sharing -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="About Lakeside Picnic | Ambleside" />
+  <meta name="twitter:description" content="Discover the journey of Lakeside Picnic, a family-run spot in Ambleside celebrating great food, coffee, ice cream, and community spirit." />
+  <meta name="twitter:image" content="https://lakesidepicnic.co.uk/images/LP-logo.png" />
+	<style>
     body {
       background-color: #fff;
       font-family: 'Roboto', sans-serif;
       color: #333;
     }
     h1, h5 {
-      color: #FF69B4; /* Pink headings */
+      color: #FF69B4;
     }
     .services_text, .card-text, ul {
-      color: #555; /* Slightly softer text color */
+      color: #555;
     }
     .card {
-      background: #fff0f5; /* Light pink background for cards */
+      background: #fff0f5;
       border: none;
       border-radius: 15px;
       padding: 20px;
@@ -60,113 +82,99 @@
     .seemore_bt a:hover {
       background-color: #ff85c1;
     }
-		
-#carouselResilience .carousel-inner {
-  height: 250px;
-}
-
-  #resilienceCarousel .carousel-item {
-    height: 100%; /* Ensure the item takes up the full height */
-  }
-
-  #resilienceCarousel img {
-    height: 100%;
-    width: 100%;
-    object-fit: contain; /* Makes sure the whole image fits inside the frame */
-  }
-	
-  .styled-list {
-    list-style-type: none;
-    padding-left: 0;
-  }
-
-  .styled-list li {
-    font-size: 16px;
-    line-height: 1.6;
-    margin-bottom: 15px;
-    display: flex;
-    align-items: center;
-  }
-
-  .styled-list li i {
-    font-size: 24px;
-    margin-right: 10px;
-    color: #4caf50; /* Green color for icons */
-  }
-
-  .card-body {
-    font-family: 'Arial', sans-serif;
-  }
-
-  .card-text {
-    color: #333;
-  }
-
-  /* Adding hover effect for list items */
-  .styled-list li:hover {
-    background-color: #f4f4f4;
-    border-radius: 5px;
-    padding: 10px;
-    transition: background-color 0.3s ease;
-  }
-
-  .fa-ice-cream {
-    color: #ff7043; /* Ice cream color */
-  }
-
-  .fa-coffee {
-    color: #6f4f28; /* Coffee color */
-  }
-
-  .fa-gift {
-    color: #9c27b0; /* Gift color */
-  }
-
-  .fa-users {
-    color: #03a9f4; /* Service color */
-  }
-.carousel-inner {
-  width: 288px;
-  height: 216px;
-  margin: 0 auto; /* Centers the carousel horizontally */
-  overflow: hidden;
-  position: relative;
-}
-
-.carousel-item img {
-  width: 288px;
-  height: 216px;
-  object-fit: cover; /* Ensures images fill the box without squishing */
-}
-
+    .styled-list {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    .styled-list li {
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+    }
+    .styled-list li i {
+      font-size: 24px;
+      margin-right: 10px;
+      color: #4caf50;
+    }
+    .styled-list li:hover {
+      background-color: #f4f4f4;
+      border-radius: 5px;
+      padding: 10px;
+      transition: background-color 0.3s ease;
+    }
+    .fa-ice-cream { color: #ff7043; }
+    .fa-coffee { color: #6f4f28; }
+    .fa-gift { color: #9c27b0; }
+    .fa-users { color: #03a9f4; }
+    .carousel-inner {
+      width: 288px;
+      height: 216px;
+      margin: 0 auto;
+      overflow: hidden;
+      position: relative;
+    }
+    .carousel-item img {
+      width: 288px;
+      height: 216px;
+      object-fit: cover;
+    }
   </style>
 </head>
-
-<body>
-
-<!-- header section -->
-<div class="header_section header_bg">
-  <div class="container">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="Lakeside Picnic Logo"></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="icecream.html">Ice Cream</a></li>
-          <li class="nav-item"><a class="nav-link" href="hotdrinks.html">Teas & Coffees</a></li>
-          <li class="nav-item"><a class="nav-link" href="romneys.html">Romney's</a></li>
-          <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
-          <li class="nav-item active"><a class="nav-link" href="about.html">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="contact.html">Contact Us</a></li>
-        </ul>
+   <body>
+      <div class="header_section header_bg">
+         <div class="container">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+               <a class="navbar-brand"href="index.html"><img src="images/logo.png"></a>
+               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon"></span>
+               </button>
+               <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav ml-auto">
+                     <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                     </li>                    
+                     <li class="nav-item">
+                        <a class="nav-link" href="icecream.html">Ice Cream</a>
+                     </li>                     <li class="nav-item">
+                        <a class="nav-link" href="hotdrinks.html">Teas & Coffees</a>
+                     </li><li class="nav-item">
+                        <a class="nav-link" href="romneys.html">Romney's</a>
+                     </li>
+                     <li class="nav-item">
+                        <a class="nav-link" href="services.html">Services</a>
+                     </li>                   
+                     <li class="nav-item active">
+                        <a class="nav-link" href="about.html">About</a>
+                     </li>										
+                     <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact Us</a>
+                     </li>
+                  </ul>
+                  <form class="form-inline my-2 my-lg-0">
+                     <div class="login_bt"><a href="#">Login <span style="color: #222222;"><i class="fa fa-user" aria-hidden="true"></i></span></a></div>
+                     <div class="fa fa-search form-control-feedback"></div>
+                  </form>
+               </div>
+            </nav>
+         </div>
       </div>
-    </nav>
-  </div>
-</div>
-<!-- header end -->
+			
+			
+<!-- Header End -->
+
+<!-- Content Section (put your About page content here) -->
+
+<!-- JS Scripts -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- jQuery -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script> <!-- Popper.js -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.6.2/js/bootstrap.min.js"></script> <!-- Bootstrap JS -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+<script>
+  AOS.init(); // Initialize AOS
+</script>
 
 <!-- about section -->
 <section class="services_section layout_padding">

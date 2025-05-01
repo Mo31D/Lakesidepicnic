@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Ambleside Trip Planner</title>
+  <title>Explore Ambleside</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
   <style>
@@ -13,7 +13,7 @@
       padding-bottom: 60px;
     }
     #map {
-      height: 400px;
+      height: 500px;
     }
     .dark-mode {
       background-color: #121212;
@@ -22,6 +22,9 @@
     .navbar.fixed-bottom {
       background-color: #f8f9fa;
       border-top: 1px solid #ccc;
+    }
+    .list-group-item {
+      cursor: pointer;
     }
   </style>
 </head>
@@ -33,15 +36,8 @@
 
   <div id="map" class="mb-3"></div>
 
-  <div class="card mb-3">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Stock_Ghyll_Force_-_geograph.org.uk_-_36446.jpg" class="card-img-top" alt="Stock Ghyll Force">
-    <div class="card-body">
-      <h5 class="card-title">Stock Ghyll Force</h5>
-      <p class="card-text">A stunning 70-foot waterfall just 10 minutes from Ambleside town centre.</p>
-      <a href="https://www.google.com/maps/dir/?api=1&destination=Stock+Ghyll+Force+Ambleside" target="_blank" class="btn btn-primary">Open in Google Maps</a>
-      <a href="http://maps.apple.com/?daddr=Stock+Ghyll+Force+Ambleside" target="_blank" class="btn btn-secondary">Open in Apple Maps</a>
-    </div>
-  </div>
+  <h3>Places to Explore Around Ambleside</h3>
+  <div class="list-group mb-5" id="locationList"></div>
 </div>
 
 <nav class="navbar fixed-bottom">
@@ -57,18 +53,93 @@
 <script>
   const apiKey = "5nLkA3mxTaA446LXiRMbw9fh5JkK6Lg6";
 
-  const map = L.map('map').setView([54.4306, -2.9626], 15);
+  const map = L.map('map').setView([54.4313, -2.9625], 13);
 
-  // Add OS Maps tile layer (ZXY raster)
-  L.tileLayer(`https://api.os.uk/maps/raster/v1/zxy/Road_27700/{z}/{x}/{y}.png?key=${apiKey}`, {
+  L.tileLayer(`https://api.os.uk/maps/raster/v1/zxy/Road_3857/{z}/{x}/{y}.png?key=${apiKey}`, {
     maxZoom: 18,
     attribution: '&copy; Ordnance Survey'
   }).addTo(map);
 
-  // Add marker for Stock Ghyll Force
-  L.marker([54.4331, -2.9631]).addTo(map)
-    .bindPopup("<strong>Stock Ghyll Force</strong><br>Beautiful waterfall in Ambleside.")
-    .openPopup();
+  const places = [
+    {
+      name: "Borrans Park",
+      desc: "A tranquil lakeside park ideal for picnics, with expansive green spaces and scenic views of Lake Windermere. Adjacent to the park are the remains of the Galava Roman Fort, providing a glimpse into the area’s ancient history.",
+      coords: [54.4275, -2.9637]
+    },
+    {
+      name: "Stock Ghyll Force Waterfalls",
+      desc: "A picturesque 70-foot waterfall nestled within a wooded glen, just a short walk from Ambleside town center. The trail offers a serene escape, with the sound of cascading water accompanying your journey.",
+      coords: [54.4340, -2.9596]
+    },
+    {
+      name: "Bridge House",
+      desc: "An iconic 17th-century structure built over Stock Beck, originally serving as an apple store. It’s renowned as one of the most photographed buildings in the Lake District.",
+      coords: [54.4313, -2.9625]
+    },
+    {
+      name: "Rydal Water",
+      desc: "A serene lake situated between Ambleside and Grasmere, offering gentle walks and connections to poet William Wordsworth, who found inspiration in its surroundings.",
+      coords: [54.4444, -3.0124]
+    },
+    {
+      name: "Rydal Cave",
+      desc: "A man-made cavern resulting from historical slate quarrying, located above Rydal Water. Visitors can explore its depths via stepping stones and may spot small fish in the shallow waters.",
+      coords: [54.4448, -3.0171]
+    },
+    {
+      name: "Ambleside Roman Fort (Galava)",
+      desc: "Dating back to the 2nd century, these well-preserved ruins offer insights into Roman military architecture and are situated near the northern shore of Lake Windermere.",
+      coords: [54.4279, -2.9642]
+    },
+    {
+      name: "Rothay Park",
+      desc: "A family-friendly park in the heart of Ambleside, featuring open fields, a children’s play area, and serving as a gateway to various walking trails leading into the surrounding fells.",
+      coords: [54.4311, -2.9682]
+    },
+    {
+      name: "Self-Drive Electric Motor Boats",
+      desc: "Experience Lake Windermere at your own pace by hiring an electric motorboat from Ambleside. No prior boating experience is necessary, and safety instructions are provided.",
+      coords: [54.4243, -2.9652]
+    },
+    {
+      name: "Windermere Lake Cruises",
+      desc: "Embark on a scenic cruise across England’s largest lake, with routes connecting Ambleside, Bowness, Brockhole, and Lakeside. Options range from short trips to full-day explorations.",
+      coords: [54.4247, -2.9648]
+    },
+    {
+      name: "Stagshaw Garden",
+      desc: "An informal woodland garden managed by the National Trust, renowned for its vibrant displays of rhododendrons and azaleas, especially in spring.",
+      coords: [54.4177, -2.9646]
+    },
+    {
+      name: "Buckstones Jump",
+      desc: "A hidden gem near Rydal, this natural plunge pool is fed by cascading waterfalls, making it a popular spot for wild swimming during warmer months.",
+      coords: [54.4480, -3.0145]
+    },
+    {
+      name: "Loughrigg Fell",
+      desc: "A moderate hike offering panoramic views of the surrounding lakes and fells. The route includes the scenic Loughrigg Terrace and provides access to Rydal Cave.",
+      coords: [54.4370, -3.0168]
+    }
+  ];
+
+  places.forEach(place => {
+    const marker = L.marker(place.coords).addTo(map);
+    marker.bindPopup(`<strong>${place.name}</strong><br>${place.desc}<br>
+      <a href="https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(place.name + ' Ambleside')}" target="_blank">Google Maps</a> |
+      <a href="http://maps.apple.com/?daddr=${encodeURIComponent(place.name + ' Ambleside')}" target="_blank">Apple Maps</a>
+    `);
+
+    // Add to list
+    const listItem = document.createElement("a");
+    listItem.className = "list-group-item list-group-item-action";
+    listItem.innerText = place.name;
+    listItem.onclick = () => {
+      map.setView(place.coords, 15);
+      marker.openPopup();
+    };
+    document.getElementById("locationList").appendChild(listItem);
+  });
 
   function toggleTheme() {
     document.body.classList.toggle('dark-mode');

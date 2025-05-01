@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ambleside Trip Planner</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      padding-bottom: 60px;
+    }
+    #map {
+      height: 400px;
+    }
+    .dark-mode {
+      background-color: #121212;
+      color: white;
+    }
+    .navbar.fixed-bottom {
+      background-color: #f8f9fa;
+      border-top: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container mt-3">
+  <h1>Explore Ambleside</h1>
+  <button onclick="toggleTheme()" class="btn btn-secondary mb-3">Toggle Dark Mode</button>
+
+  <div id="map" class="mb-3"></div>
+
+  <div class="card mb-3">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Stock_Ghyll_Force_-_geograph.org.uk_-_36446.jpg" class="card-img-top" alt="Stock Ghyll Force">
+    <div class="card-body">
+      <h5 class="card-title">Stock Ghyll Force</h5>
+      <p class="card-text">A stunning 70-foot waterfall just 10 minutes from Ambleside town centre.</p>
+      <a href="https://www.google.com/maps/dir/?api=1&destination=Stock+Ghyll+Force+Ambleside" target="_blank" class="btn btn-primary">Open in Google Maps</a>
+      <a href="http://maps.apple.com/?daddr=Stock+Ghyll+Force+Ambleside" target="_blank" class="btn btn-secondary">Open in Apple Maps</a>
+    </div>
+  </div>
+</div>
+
+<nav class="navbar fixed-bottom">
+  <div class="container-fluid justify-content-around">
+    <a class="nav-link" href="#">Home</a>
+    <a class="nav-link" href="#map">Map</a>
+    <a class="nav-link" href="#">Itinerary</a>
+    <a class="nav-link" href="#">Settings</a>
+  </div>
+</nav>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+  const apiKey = "5nLkA3mxTaA446LXiRMbw9fh5JkK6Lg6";
+
+  const map = L.map('map').setView([54.4306, -2.9626], 15);
+
+  // Add OS Maps tile layer (ZXY raster)
+  L.tileLayer(`https://api.os.uk/maps/raster/v1/zxy/Road_27700/{z}/{x}/{y}.png?key=${apiKey}`, {
+    maxZoom: 18,
+    attribution: '&copy; Ordnance Survey'
+  }).addTo(map);
+
+  // Add marker for Stock Ghyll Force
+  L.marker([54.4331, -2.9631]).addTo(map)
+    .bindPopup("<strong>Stock Ghyll Force</strong><br>Beautiful waterfall in Ambleside.")
+    .openPopup();
+
+  function toggleTheme() {
+    document.body.classList.toggle('dark-mode');
+  }
+</script>
+
+</body>
+</html>

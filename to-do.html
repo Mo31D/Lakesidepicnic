@@ -160,7 +160,7 @@
 
 <!-- Route Planner Section 1 -->
 <div class="container mt-4">
-  <h3>Suggested Walks From Lakeside Picnic: <br><br>Stock Ghyll Force Waterfall</h3>
+  <h3>Suggested Walks From Lakeside Picnic: <br><br>1. Stock Ghyll Force Waterfall</h3>
   <div id="routeMap" style="height: 400px;" class="mb-3"></div>
 
   <div class="row">
@@ -183,7 +183,7 @@
 <br>
 <!-- Route Planner Section 2 -->
 <div class="container mt-4">
-  <h3>Rydal Water & Cave</h3>
+  <h3>2. Rydal Water & Cave</h3>
   <div id="routeMap2" style="height: 400px;" class="mb-3"></div>
 
   <div class="row">
@@ -201,7 +201,7 @@
 
 <!-- Route 3 -->
 <div class="container mt-4">
-  <h3>Suggested Walk: Roman Fort Loop</h3>
+  <h3>3. Stagshaw Garden - Ambleside - Stock Ghyll Force Loop</h3>
   <div id="routeMap3" style="height: 400px;" class="mb-2"></div>
 
   <div class="row">
@@ -268,10 +268,13 @@
   }).addTo(routeMap2);
 
   const waypoints2 = [
-    L.latLng(54.4370, -3.0168),   // Loughrigg Fell
-    L.latLng(54.4444, -3.0124),   // Rydal Water
-    L.latLng(54.4448, -3.0171),   // Rydal Cave
-    L.latLng(54.4370, -3.0168),   // Back to Loughrigg Fell
+    L.latLng(54.4208218, -2.9625096),   // Lakeside
+		L.latLng(54.4265827, -2.9695977),   // Riverside
+    L.latLng(54.4318404, -2.9712315),   // Rydal Water
+    L.latLng(54.4449891, -2.9789646),   // Rydal Cave
+    L.latLng(54.4456921, -2.9858653), 		// 
+		L.latLng(54.4442949, -2.9918670), 		// 
+		L.latLng(54.4433009, -2.9964583),   // 
   ];
 
   L.Routing.control({
@@ -299,10 +302,10 @@
   }).addTo(routeMap3);
 
   const waypoints3 = [
-    L.latLng(54.4279, -2.9642),  // Roman Fort
-    L.latLng(54.4311, -2.9682),  // Rothay Park
-    L.latLng(54.4275, -2.9637),  // Borrans Park
-    L.latLng(54.4279, -2.9642),  // back to Roman Fort
+    L.latLng(54.4174161, -2.9565993),  // Stagshaw
+    L.latLng(54.4287882, -2.9615605),  // Ambleside
+    L.latLng(54.4327506, -2.9511256),  // Waterfall
+    L.latLng(54.4208052, -2.9624999),  // lakeside P
   ];
 
   L.Routing.control({
@@ -315,9 +318,9 @@
     createMarker: function(i, waypoint, n) {
       return L.marker(waypoint.latLng).bindPopup(
         i === 0
-          ? 'Start: Roman Fort'
+          ? 'Stop: Stagshaw Garden'
           : i === n - 1
-          ? 'End: Roman Fort'
+          ? 'Start: Lakeside Picnic'
           : 'Stop ' + i
       );
     },

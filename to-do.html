@@ -157,7 +157,6 @@
 
 
 
-
 <!-- Route Planner Section 1 -->
 <div class="container mt-4">
   <h3>Suggested Walks From Lakeside Picnic: <br><br>1. Stock Ghyll Force Waterfall</h3>
@@ -228,72 +227,77 @@
 
 <script>
   // Route 1: Lakeside Picnic Loop
-  const routeMap = L.map('routeMap').setView([54.42086, -2.96236], 13);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution:
-      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-  }).addTo(routeMap);
+const routeMap = L.map('routeMap').setView([54.42086, -2.96236], 13);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution:
+    '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+}).addTo(routeMap);
 
-  const waypoints = [
-    L.latLng(54.4208134, -2.9624932),
-    L.latLng(54.4215492, -2.9653692),
-    L.latLng(54.4319022, -2.9618420),
-    L.latLng(54.4327400, -2.9511095),
-    L.latLng(54.4208134, -2.9624932),
-  ];
+const waypoints = [
+  L.latLng(54.4208134, -2.9624932),
+  L.latLng(54.4215492, -2.9653692),
+  L.latLng(54.4319022, -2.9618420),
+  L.latLng(54.4327400, -2.9511095),
+  L.latLng(54.4208134, -2.9624932),
+];
 
-  L.Routing.control({
-    waypoints: waypoints,
-    routeWhileDragging: false,
-    show: false,
-    addWaypoints: false,
-    draggableWaypoints: false,
-    fitSelectedRoutes: true,
-    createMarker: function(i, waypoint, n) {
-      return L.marker(waypoint.latLng).bindPopup(
-        i === 0
-          ? 'Start: Lakeside Picnic'
-          : i === n - 1
-          ? 'Start: Lakeside Picnic'
-          : 'Stop ' + i
-      );
-    },
-  }).addTo(routeMap);
+const placeNames = [
+  'Lakeside Picnic',
+  'Borrans Park',
+  'Ambleside',
+  'Stock Ghyll Force Waterfall',
+  'Lakeside Picnic',
+];
+
+L.Routing.control({
+  waypoints: waypoints,
+  routeWhileDragging: false,
+  show: false,
+  addWaypoints: false,
+  draggableWaypoints: false,
+  fitSelectedRoutes: true,
+  createMarker: function(i, waypoint, n) {
+    return L.marker(waypoint.latLng).bindPopup(placeNames[i] || `Stop ${i}`);
+  },
+}).addTo(routeMap);
 
   // Route 2: Rydal Round
   const routeMap2 = L.map('routeMap2').setView([54.4370, -3.0168], 13);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution:
-      '&copy; OpenStreetMap contributors',
-  }).addTo(routeMap2);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; OpenStreetMap contributors',
+}).addTo(routeMap2);
 
-  const waypoints2 = [
-    L.latLng(54.4208218, -2.9625096),   // Lakeside
-		L.latLng(54.4265827, -2.9695977),   // Riverside
-    L.latLng(54.4318404, -2.9712315),   // Rydal Water
-    L.latLng(54.4449891, -2.9789646),   // Rydal Cave
-    L.latLng(54.4456921, -2.9858653), 		// 
-		L.latLng(54.4442949, -2.9918670), 		// 
-		L.latLng(54.4433009, -2.9964583),   // 
-  ];
+const waypoints2 = [
+  L.latLng(54.4208218, -2.9625096),   // Lakeside
+  L.latLng(54.4265827, -2.9695977),   // Riverside
+  L.latLng(54.4318404, -2.9712315),   // Rydal Water
+  L.latLng(54.4449891, -2.9789646),   // Rydal Cave
+  L.latLng(54.4456921, -2.9858653),   // Stop 4 (You can name this)
+  L.latLng(54.4442949, -2.9918670),   // Stop 5 (You can name this)
+  L.latLng(54.4433009, -2.9964583),   // Stop 6 (You can name this)
+];
 
-  L.Routing.control({
-    waypoints: waypoints2,
-    routeWhileDragging: false,
-    show: false,
-    addWaypoints: false,
-    draggableWaypoints: false,
-    fitSelectedRoutes: true,
-    createMarker: function(i, waypoint, n) {
-      return L.marker(waypoint.latLng).bindPopup(
-        i === 0
-          ? 'Start: Loughrigg Fell'
-          : i === n - 1
-          ? 'End: Loughrigg Fell'
-          : 'Stop ' + i
-      );
-    },
-  }).addTo(routeMap2);
+const placeNames2 = [
+  'Lakeside Picnic - Start',
+  'Riverside - Off Road',
+  'you can Turn Right to see Rothay Park - or Continuo walk to Rydal',
+  'Rydal',
+  'To Rydal Water - Off Road',
+  'Viewpoint - Continuo to the Cave',
+  'Rydal Cave - End',
+];
+
+L.Routing.control({
+  waypoints: waypoints2,
+  routeWhileDragging: false,
+  show: false,
+  addWaypoints: false,
+  draggableWaypoints: false,
+  fitSelectedRoutes: true,
+  createMarker: function(i, waypoint, n) {
+    return L.marker(waypoint.latLng).bindPopup(placeNames2[i] || `Stop ${i}`);
+  },
+}).addTo(routeMap2);
 	
 	// Route 3: Roman Fort Loop
   const routeMap3 = L.map('routeMap3').setView([54.4279, -2.9642], 14);

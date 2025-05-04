@@ -40,15 +40,6 @@
   <div class="list-group mb-5" id="locationList"></div>
 </div>
 
-<nav class="navbar fixed-bottom">
-  <div class="container-fluid justify-content-around">
-    <a class="nav-link" href="#">Home</a>
-    <a class="nav-link" href="#map">Map</a>
-    <a class="nav-link" href="#">Itinerary</a>
-    <a class="nav-link" href="#">Settings</a>
-  </div>
-</nav>
-
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
   const apiKey = "5nLkA3mxTaA446LXiRMbw9fh5JkK6Lg6";
@@ -63,74 +54,88 @@
   const places = [
     {
       name: "Borrans Park",
-      desc: "A tranquil lakeside park ideal for picnics, with expansive green spaces and scenic views of Lake Windermere. Adjacent to the park are the remains of the Galava Roman Fort, providing a glimpse into the area’s ancient history.",
-      coords: [54.4275, -2.9637]
+      desc: "A tranquil lakeside park ideal for picnics, with expansive green spaces and scenic views of Lake Windermere. Adjacent to the park are the remains of the Galava Roman Fort.",
+      coords: [54.4216103, -2.9654731],
+      image: "to-do/Borrans.jpeg"
     },
     {
       name: "Stock Ghyll Force Waterfalls",
-      desc: "A picturesque 70-foot waterfall nestled within a wooded glen, just a short walk from Ambleside town center. The trail offers a serene escape, with the sound of cascading water accompanying your journey.",
-      coords: [54.4340, -2.9596]
+      desc: "A picturesque 70-foot waterfall nestled within a wooded glen, just a short walk from Ambleside town center.",
+      coords: [54.4327732, -2.9511477],
+      image: "to-do/Stockghyll.jpeg"
     },
     {
       name: "Bridge House",
-      desc: "An iconic 17th-century structure built over Stock Beck, originally serving as an apple store. It’s renowned as one of the most photographed buildings in the Lake District.",
-      coords: [54.4313, -2.9625]
+      desc: "An iconic 17th-century structure built over Stock Beck, originally serving as an apple store.",
+      coords: [54.4331769, -2.9635570],
+      image: "to-do/Bridgeh.jpeg"
     },
     {
       name: "Rydal Water",
-      desc: "A serene lake situated between Ambleside and Grasmere, offering gentle walks and connections to poet William Wordsworth, who found inspiration in its surroundings.",
-      coords: [54.4444, -3.0124]
+      desc: "A serene lake situated between Ambleside and Grasmere, offering gentle walks and Wordsworth connections.",
+      coords: [54.4453340, -2.9906268],
+      image: "to-do/Rydalw.webp"
     },
     {
       name: "Rydal Cave",
-      desc: "A man-made cavern resulting from historical slate quarrying, located above Rydal Water. Visitors can explore its depths via stepping stones and may spot small fish in the shallow waters.",
-      coords: [54.4448, -3.0171]
+      desc: "A man-made cavern from historical slate quarrying, with stepping stones and clear water.",
+      coords: [54.4432836, -2.9964432],
+      image: "to-do/Cave.jpeg"
     },
     {
-      name: "Ambleside Roman Fort (Galava)",
-      desc: "Dating back to the 2nd century, these well-preserved ruins offer insights into Roman military architecture and are situated near the northern shore of Lake Windermere.",
-      coords: [54.4279, -2.9642]
+      name: "Roman Fort (Galava)",
+      desc: "2nd-century Roman ruins near Lake Windermere’s north shore.",
+      coords: [54.4223508, -2.9686867],
+      image: "to-do/Roman.jpeg"
     },
     {
       name: "Rothay Park",
-      desc: "A family-friendly park in the heart of Ambleside, featuring open fields, a children’s play area, and serving as a gateway to various walking trails leading into the surrounding fells.",
-      coords: [54.4311, -2.9682]
+      desc: "Family park with trails, playground, and access to surrounding fells.",
+      coords: [54.4313218, -2.9686897],
+      image: "to-do/Rothay.jpeg"
     },
     {
       name: "Self-Drive Electric Motor Boats",
-      desc: "Experience Lake Windermere at your own pace by hiring an electric motorboat from Ambleside. No prior boating experience is necessary, and safety instructions are provided.",
-      coords: [54.4243, -2.9652]
+      desc: "Hire a boat on Windermere and cruise freely.",
+      coords: [54.4201328, -2.9619859],
+      image: "to-do/Self.jpeg"
     },
     {
-      name: "Windermere Lake Cruises",
-      desc: "Embark on a scenic cruise across England’s largest lake, with routes connecting Ambleside, Bowness, Brockhole, and Lakeside. Options range from short trips to full-day explorations.",
-      coords: [54.4247, -2.9648]
+      name: "Boat Trip",
+      desc: "Scenic boat rides between Ambleside, Bowness & more.",
+      coords: [54.4197226, -2.9621894],
+      image: "to-do/Boat.jpeg"
     },
     {
       name: "Stagshaw Garden",
-      desc: "An informal woodland garden managed by the National Trust, renowned for its vibrant displays of rhododendrons and azaleas, especially in spring.",
-      coords: [54.4177, -2.9646]
+      desc: "Woodland garden with azaleas and rhododendrons.",
+      coords: [54.4174042, -2.9565742],
+      image: "to-do/Garden.jpeg"
     },
     {
       name: "Buckstones Jump",
-      desc: "A hidden gem near Rydal, this natural plunge pool is fed by cascading waterfalls, making it a popular spot for wild swimming during warmer months.",
-      coords: [54.4480, -3.0145]
+      desc: "A wild swimming pool fed by natural waterfalls.",
+      coords: [54.4611010, -2.9787970],
+      image: "to-do/Jump.jpeg"
     },
     {
-      name: "Loughrigg Fell",
-      desc: "A moderate hike offering panoramic views of the surrounding lakes and fells. The route includes the scenic Loughrigg Terrace and provides access to Rydal Cave.",
-      coords: [54.4370, -3.0168]
+      name: "Also Search for Loughrigg Mountain, Brochole Zip World, Low Wood Watersports, Wray Castle ",
+      desc: "A panoramic hike with lake and fell views.",
+      coords: [54.4335341, -2.9743217],
+      image: "to-do/Loughrigg.jpeg"
     }
   ];
 
   places.forEach(place => {
     const marker = L.marker(place.coords).addTo(map);
-    marker.bindPopup(`<strong>${place.name}</strong><br>${place.desc}<br>
+    marker.bindPopup(`
+      <strong>${place.name}</strong><br>
+      <img src="${place.image}" alt="${place.name}" style="width:100%; max-height:150px; object-fit:cover; margin:6px 0;"><br>
+      ${place.desc}<br>
       <a href="https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(place.name + ' Ambleside')}" target="_blank">Google Maps</a> |
       <a href="http://maps.apple.com/?daddr=${encodeURIComponent(place.name + ' Ambleside')}" target="_blank">Apple Maps</a>
     `);
 
-    // Add to list
     const listItem = document.createElement("a");
     listItem.className = "list-group-item list-group-item-action";
     listItem.innerText = place.name;
@@ -144,6 +149,180 @@
   function toggleTheme() {
     document.body.classList.toggle('dark-mode');
   }
+</script>
+
+
+
+
+
+
+
+
+<!-- Route Planner Section 1 -->
+<div class="container mt-4">
+  <h3>Suggested Walks From Lakeside Picnic: <br><br>Stock Ghyll Force Waterfall</h3>
+  <div id="routeMap" style="height: 400px;" class="mb-3"></div>
+
+  <div class="row">
+    <div class="col-md-4 mb-2">
+      <img src="to-do/Borrans.jpeg" class="img-fluid rounded" alt="Borrans Park">
+    </div>
+    <div class="col-md-4 mb-2">
+      <img src="https://via.placeholder.com/400x250?text=Stop+2" class="img-fluid rounded" alt="Ambleside">
+    </div>
+    <div class="col-md-4 mb-2">
+      <img src="to-do/Stockghyll.jpeg" class="img-fluid rounded" alt="StockGhyll Force">
+    </div>
+  </div>
+</div>
+
+
+<br>
+<br>
+<br>
+<br>
+<!-- Route Planner Section 2 -->
+<div class="container mt-4">
+  <h3>Rydal Water & Cave</h3>
+  <div id="routeMap2" style="height: 400px;" class="mb-3"></div>
+
+  <div class="row">
+    <div class="col-md-4 mb-2">
+      <img src="https://via.placeholder.com/400x250?text=Stop+1" class="img-fluid rounded" alt="Borrans Park">
+    </div>
+    <div class="col-md-4 mb-2">
+      <img src="https://via.placeholder.com/400x250?text=Stop+2" class="img-fluid rounded" alt="Lughrigg">
+    </div>
+    <div class="col-md-4 mb-2">
+      <img src="https://via.placeholder.com/400x250?text=Stop+3" class="img-fluid rounded" alt="Rydal Water">
+    </div>
+  </div>
+</div>
+
+<!-- Route 3 -->
+<div class="container mt-4">
+  <h3>Suggested Walk: Roman Fort Loop</h3>
+  <div id="routeMap3" style="height: 400px;" class="mb-2"></div>
+
+  <div class="row">
+    <div class="col-md-4 mb-2">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/77/Remains_of_Galava%2C_Ambleside.jpg" class="img-fluid rounded" alt="Roman Fort">
+    </div>
+    <div class="col-md-4 mb-2">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Rothay_Park_-_geograph.org.uk_-_527972.jpg" class="img-fluid rounded" alt="Rothay Park">
+    </div>
+    <div class="col-md-4 mb-2">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e0/Stock_Ghyll_Force_-_geograph.org.uk_-_1930520.jpg" class="img-fluid rounded" alt="Borrans Park">
+    </div>
+  </div>
+</div>
+
+<!-- Leaflet Routing Machine CSS -->
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css"
+/>
+
+<!-- Leaflet Routing Machine JS -->
+<script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+
+<script>
+  // Route 1: Lakeside Picnic Loop
+  const routeMap = L.map('routeMap').setView([54.42086, -2.96236], 13);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution:
+      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+  }).addTo(routeMap);
+
+  const waypoints = [
+    L.latLng(54.4208134, -2.9624932),
+    L.latLng(54.4215492, -2.9653692),
+    L.latLng(54.4319022, -2.9618420),
+    L.latLng(54.4327400, -2.9511095),
+    L.latLng(54.4208134, -2.9624932),
+  ];
+
+  L.Routing.control({
+    waypoints: waypoints,
+    routeWhileDragging: false,
+    show: false,
+    addWaypoints: false,
+    draggableWaypoints: false,
+    fitSelectedRoutes: true,
+    createMarker: function(i, waypoint, n) {
+      return L.marker(waypoint.latLng).bindPopup(
+        i === 0
+          ? 'Start: Lakeside Picnic'
+          : i === n - 1
+          ? 'Start: Lakeside Picnic'
+          : 'Stop ' + i
+      );
+    },
+  }).addTo(routeMap);
+
+  // Route 2: Rydal Round
+  const routeMap2 = L.map('routeMap2').setView([54.4370, -3.0168], 13);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution:
+      '&copy; OpenStreetMap contributors',
+  }).addTo(routeMap2);
+
+  const waypoints2 = [
+    L.latLng(54.4370, -3.0168),   // Loughrigg Fell
+    L.latLng(54.4444, -3.0124),   // Rydal Water
+    L.latLng(54.4448, -3.0171),   // Rydal Cave
+    L.latLng(54.4370, -3.0168),   // Back to Loughrigg Fell
+  ];
+
+  L.Routing.control({
+    waypoints: waypoints2,
+    routeWhileDragging: false,
+    show: false,
+    addWaypoints: false,
+    draggableWaypoints: false,
+    fitSelectedRoutes: true,
+    createMarker: function(i, waypoint, n) {
+      return L.marker(waypoint.latLng).bindPopup(
+        i === 0
+          ? 'Start: Loughrigg Fell'
+          : i === n - 1
+          ? 'End: Loughrigg Fell'
+          : 'Stop ' + i
+      );
+    },
+  }).addTo(routeMap2);
+	
+	// Route 3: Roman Fort Loop
+  const routeMap3 = L.map('routeMap3').setView([54.4279, -2.9642], 14);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors',
+  }).addTo(routeMap3);
+
+  const waypoints3 = [
+    L.latLng(54.4279, -2.9642),  // Roman Fort
+    L.latLng(54.4311, -2.9682),  // Rothay Park
+    L.latLng(54.4275, -2.9637),  // Borrans Park
+    L.latLng(54.4279, -2.9642),  // back to Roman Fort
+  ];
+
+  L.Routing.control({
+    waypoints: waypoints3,
+    routeWhileDragging: false,
+    show: false,
+    addWaypoints: false,
+    draggableWaypoints: false,
+    fitSelectedRoutes: true,
+    createMarker: function(i, waypoint, n) {
+      return L.marker(waypoint.latLng).bindPopup(
+        i === 0
+          ? 'Start: Roman Fort'
+          : i === n - 1
+          ? 'End: Roman Fort'
+          : 'Stop ' + i
+      );
+    },
+  }).addTo(routeMap3);
+
 </script>
 
 </body>

@@ -242,11 +242,11 @@ const waypoints = [
 ];
 
 const placeNames = [
-  'Lakeside Picnic',
-  'Borrans Park',
-  'Ambleside',
-  'Stock Ghyll Force Waterfall',
-  'Lakeside Picnic',
+  '1. Lakeside Picnic',
+  '2. Borrans Park',
+  '3. Ambleside',
+  '4. Stock Ghyll Force Waterfall',
+  '1. Lakeside Picnic',
 ];
 
 L.Routing.control({
@@ -300,37 +300,43 @@ L.Routing.control({
 }).addTo(routeMap2);
 	
 	// Route 3: Roman Fort Loop
-  const routeMap3 = L.map('routeMap3').setView([54.4279, -2.9642], 14);
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; OpenStreetMap contributors',
-  }).addTo(routeMap3);
+const routeMap3 = L.map('routeMap3').setView([54.4279, -2.9642], 14);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '&copy; OpenStreetMap contributors',
+}).addTo(routeMap3);
 
-  const waypoints3 = [
-    L.latLng(54.4174161, -2.9565993),  // Stagshaw
-    L.latLng(54.4287882, -2.9615605),  // Ambleside
-    L.latLng(54.4327506, -2.9511256),  // Waterfall
-    L.latLng(54.4208052, -2.9624999),  // lakeside P
-  ];
+const waypoints3 = [
+  L.latLng(54.4208236, -2.9625049),  // Stagshaw
+  L.latLng(54.4160899, -2.9590646),  // Ambleside
+  L.latLng(54.4174465, -2.9565913),  // Waterfall
+  L.latLng(54.4197505, -2.9560699),  // Lakeside Point 2
+	L.latLng(54.4327599, -2.9511229),  // Lakeside Picnic
+];
 
-  L.Routing.control({
-    waypoints: waypoints3,
-    routeWhileDragging: false,
-    show: false,
-    addWaypoints: false,
-    draggableWaypoints: false,
-    fitSelectedRoutes: true,
-    createMarker: function(i, waypoint, n) {
-      return L.marker(waypoint.latLng).bindPopup(
-        i === 0
-          ? 'Stop: Stagshaw Garden'
-          : i === n - 1
-          ? 'Start: Lakeside Picnic'
-          : 'Stop ' + i
-      );
-    },
-  }).addTo(routeMap3);
+const placeNames3 = [
+  '1. Lakeside Picnic - Start',
+  '2. Turn Left to - Stagshaw Garden',
+  '3. Stagshaw Viewpoint',
+  '4. To Ambleside Path',
+	'5. Stock Ghyll Force Waterfall',
+];
 
+L.Routing.control({
+  waypoints: waypoints3,
+  routeWhileDragging: false,
+  show: false,
+  addWaypoints: false,
+  draggableWaypoints: false,
+  fitSelectedRoutes: true,
+  createMarker: function(i, waypoint, n) {
+    return L.marker(waypoint.latLng).bindPopup(placeNames3[i] || `Stop ${i}`);
+  },
+}).addTo(routeMap3);
 </script>
+
+
+
+
 
 </body>
 </html>

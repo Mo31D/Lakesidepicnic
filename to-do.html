@@ -26,6 +26,25 @@
     .list-group-item {
       cursor: pointer;
     }
+		.counter-wrapper {
+      text-align: center;
+      padding: 20px;
+      background: white;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .counter-wrapper img {
+      max-width: 100%;
+    }
+
+    .counter-text {
+      font-size: 9px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 15px;
+    }
   </style>
 </head>
 <body>
@@ -45,86 +64,129 @@
   const apiKey = "5nLkA3mxTaA446LXiRMbw9fh5JkK6Lg6";
 
   const map = L.map('map').setView([54.4313, -2.9625], 13);
+	
+	
+	
+// Add red circle for starting point
+L.circle([54.4208552, -2.9623681], {
+  color: 'red',
+  fillColor: '#f03',
+  fillOpacity: 0.5,
+  radius: 20
+}).addTo(map).bindPopup("Lakeside Picnic (Starting Point)");
 
+// Optional: also add a standard marker
+L.marker([54.4208552, -2.9623681]).addTo(map)
+  .bindPopup("<strong>Lakeside Picnic (Starting Point)</strong><br>You are here!");
+	
   L.tileLayer(`https://api.os.uk/maps/raster/v1/zxy/Road_3857/{z}/{x}/{y}.png?key=${apiKey}`, {
     maxZoom: 18,
     attribution: '&copy; Ordnance Survey'
   }).addTo(map);
-
+	
+	
+	
   const places = [
     {
-      name: "Borrans Park",
-      desc: "A tranquil lakeside park ideal for picnics, with expansive green spaces and scenic views of Lake Windermere. Adjacent to the park are the remains of the Galava Roman Fort.",
+      name: "Borrans Park ",
+      desc: "A peaceful lakeside green space at the northern tip of Lake Windermere. It’s perfect for relaxing walks, scenic photography, and picnics with stunning views of the water and surrounding fells. The park also features the ruins of a Roman fort, adding a touch of history to its natural beauty. 3 min walking (0.1 mi) Mostly flat",
       coords: [54.4216103, -2.9654731],
       image: "to-do/Borrans.jpeg"
     },
+		{
+  "name": "Roman Fort (Galava)",
+  "desc": "Step back nearly 2,000 years at the Roman Fort of Galava. Built during the reign of Emperor Hadrian in the early 2nd century AD, this fort once housed a 500-strong infantry unit guarding vital Roman roads between Brougham and Ravenglass. The site is open to the public and managed by the National Trust. 5-minutes walk (0.2 mi) ",
+  "coords": [54.4223508, -2.9686867],
+  "image": "to-do/Roman.jpeg"
+},
+		{
+  "name": "Boat Trip £",
+  "desc": "Embark on a scenic voyage with Windermere Lake Cruises, offering a variety of routes across England's largest natural lake. From the Waterhead Pier in Ambleside, just a 2-minute walk (0.1 mi) connecting Ambleside, Brockhole, and Bowness, showcasing panoramic mountain vistas and tranquil bays.",
+  "coords": [54.4197226, -2.9621894],
+  "image": "to-do/Boat.jpeg"
+},
+		{
+  "name": "Self-Drive Electric Boats £",
+  "desc": "Experience the freedom of Lake Windermere with Windermere Lake Cruises' self-drive electric boats. These quiet, eco-friendly vessels accommodate up to six passengers and are perfect for families, couples, or small groups. No prior boating experience is necessary—comprehensive safety instructions and life jackets are provided.",
+  "coords": [54.4201328, -2.9619859],
+  "image": "to-do/Self.jpeg"
+},
     {
-      name: "Stock Ghyll Force Waterfalls",
-      desc: "A picturesque 70-foot waterfall nestled within a wooded glen, just a short walk from Ambleside town center.",
-      coords: [54.4327732, -2.9511477],
-      image: "to-do/Stockghyll.jpeg"
+      name: "Stagshaw Garden",
+      desc: "Stagshaw Garden is a peaceful woodland garden near Ambleside, known for its vibrant displays of rhododendrons, azaleas, and camellias. Managed by the National Trust, it offers winding trails, small waterfalls, and lovely views over Lake Windermere. Perfect for a quiet, scenic walk.",
+      coords: [54.4174042, -2.9565742],
+      image: "to-do/Garden.jpeg"
     },
-    {
+		{
+      name: "Jenkin Crag & Skelghyll Wood.",
+      desc: "it’s an easy 1.5 to 2-hour loop through Skelghyll Wood. You’ll see huge old trees, maybe spot red squirrels, and there’s a stunning viewpoint over Lake Windermere from the crag. A great little escape close to town..The Location here is to starting Point",
+      coords: [54.4203476, -2.9614756],
+      image: "to-do/Jenkin.jpeg"
+    },
+		{
+      name: "Wansfell Pike ",
+      desc: "A prominent fell overlooking Ambleside, offering a more challenging climb with sweeping views of Windermere, the Langdale Pikes, and even the Pennines on clear days. The circular route via Troutbeck provides a varied and satisfying hike through open fell and charming countryside.",
+      coords: [54.428294, -2.940948],
+      image: "to-do/Wansfell.jpeg"
+    },
+		{
       name: "Bridge House",
-      desc: "An iconic 17th-century structure built over Stock Beck, originally serving as an apple store.",
+      desc: "An iconic 17th-century stone building perched over Stock Beck in the heart of Ambleside, Bridge House was originally built by the Braithwaite family as an apple store and to access land across the beck—cleverly avoiding land tax by being built over water. Over the centuries, the tiny two-room structure has served as a weaving shop, tea room, cobbler’s workshop, and even housed a family of eight. In 1926, locals raised funds to preserve it, and it was entrusted to the National Trust. Today, it’s one of the most photographed landmarks in the Lake District and a window into Ambleside’s rich history.",
       coords: [54.4331769, -2.9635570],
       image: "to-do/Bridgeh.jpeg"
     },
-    {
-      name: "Rydal Water",
-      desc: "A serene lake situated between Ambleside and Grasmere, offering gentle walks and Wordsworth connections.",
-      coords: [54.4453340, -2.9906268],
-      image: "to-do/Rydalw.webp"
-    },
-    {
-      name: "Rydal Cave",
-      desc: "A man-made cavern from historical slate quarrying, with stepping stones and clear water.",
-      coords: [54.4432836, -2.9964432],
-      image: "to-do/Cave.jpeg"
-    },
-    {
-      name: "Roman Fort (Galava)",
-      desc: "2nd-century Roman ruins near Lake Windermere’s north shore.",
-      coords: [54.4223508, -2.9686867],
-      image: "to-do/Roman.jpeg"
-    },
-    {
+		{
       name: "Rothay Park",
-      desc: "Family park with trails, playground, and access to surrounding fells.",
+      desc: "A a spacious, family-friendly park located in the heart of Ambleside. It features large grassy areas, picnic benches, and a jungle-themed playground designed for children of all ages. The park includes a full-size football pitch and serves as a starting point for walks to nearby fells like Loughrigg. Its accessible paths and scenic setting make it ideal for relaxation, play, and enjoying the natural beauty of the Lake District.",
       coords: [54.4313218, -2.9686897],
       image: "to-do/Rothay.jpeg"
     },
     {
-      name: "Self-Drive Electric Motor Boats",
-      desc: "Hire a boat on Windermere and cruise freely.",
-      coords: [54.4201328, -2.9619859],
-      image: "to-do/Self.jpeg"
+      name: "Stock Ghyll Force Waterfalls",
+      desc: "Stock Ghyll Force is a picturesque 70-foot waterfall nestled within a wooded ravine just a short walk from Ambleside town center. The trail to the falls is well-marked and easy to follow, making it accessible for most visitors. Along the path, you’ll encounter a series of smaller cascades, and in spring, the woodland floor is adorned with blooming daffodils. A viewing platform provides a safe spot to admire and photograph the waterfall’s segmented tiers. The circular route through Stock Ghyll Woods offers a tranquil escape and a glimpse into the area’s natural beauty.",
+      coords: [54.4327732, -2.9511477],
+      image: "to-do/Stockghyll.jpeg"
     },
     {
-      name: "Boat Trip",
-      desc: "Scenic boat rides between Ambleside, Bowness & more.",
-      coords: [54.4197226, -2.9621894],
-      image: "to-do/Boat.jpeg"
-    },
+  "name": "Loughrigg Fell ",
+  "desc": "Loughrigg Fell is a prominent hill in the Lake District, offering panoramic views over Windermere, Grasmere, and the surrounding fells. Starting from Lakeside Picnic, it's approximately a 1.1-mile walk.",
+  "coords": [54.4335341, -2.9743217],
+  "image": "to-do/Loughrigg.jpeg"
+},
+		{
+  "name": "Wray Castle by Boat £",
+  "desc": "A Victorian Gothic-style building on Lake Windermere’s western shore, was built in the 1840s for a retired surgeon. Though the castle is closed for refurbishment in 2025, its scenic grounds remain open daily from 08:00 to 20:00. Visitors can enjoy lakeshore walks, picnic spots, views of the Langdale Pikes, and notable trees like Wellingtonia and Ginkgo biloba. Joey’s Café offers light refreshments, and the estate is dog-friendly (on leads). With links to Beatrix Potter and access by foot, bike, or boat, Wray Castle offers a peaceful escape. Parking charges apply for non-National Trust members.",
+  "coords": [54.4007673, -2.9646785],
+  "image": "to-do/Wray.jpeg"
+},
     {
-      name: "Stagshaw Garden",
-      desc: "Woodland garden with azaleas and rhododendrons.",
-      coords: [54.4174042, -2.9565742],
-      image: "to-do/Garden.jpeg"
-    },
+  "name": "Rydal Water ",
+  "desc": "Rydal Water is a serene lake nestled between Ambleside and Grasmere in the Lake District. This tranquil spot offers gentle walks along its shores, making it an ideal location for reflection and nature appreciation. The area is steeped in literary history, having inspired poet William Wordsworth, who described it as 'the loveliest spot that man hath ever found.' Visitors can explore the circular walk around the lake, which passes by Rydal Mount, Wordsworth's former home, and Rydal Cave. The route provides stunning views of the surrounding fells and is suitable for walkers of all levels. Whether you're interested in literary history, nature walks, or simply enjoying the peaceful surroundings, Rydal Water offers a memorable experience.",
+  "coords": [54.4453340, -2.9906268],
+  "image": "to-do/Rydalw.webp"
+},
+    {
+  "name": "Rydal Cave ",
+  "desc": "Rydal Cave is a captivating man-made cavern located on the northern slopes of Loughrigg Fell, overlooking Rydal Water. Originally known as Loughrigg Quarry, it was active during the 18th and 19th centuries, supplying high-quality roofing slate to local villages.  Today, the cave is a popular destination for walkers and photographers. Visitors can cross stepping stones over a shallow lake at the entrance, leading into a dry floor space inside the cavern. The interior is illuminated by natural light filtering through openings in the rock, creating a dramatic and picturesque setting. The area is also home to small fish, adding to the site's unique charm.  The cave gained additional fame as a filming location for Season 2, Episode 7 of Netflix's 'The Witcher.' ",
+  "coords": [54.4432836, -2.9964432],
+  "image": "to-do/Cave.jpeg"
+},      
     {
       name: "Buckstones Jump",
-      desc: "A wild swimming pool fed by natural waterfalls.",
+      desc: "A secluded waterfall and natural plunge pool near Rydal, just outside Ambleside. Surrounded by greenery, it’s a popular wild swimming spot with scenic views and a peaceful atmosphere. Reachable via a short hike from Rydal Hall, it’s perfect for a quiet escape, especially on warm days.",
       coords: [54.4611010, -2.9787970],
       image: "to-do/Jump.jpeg"
     },
-    {
-      name: "Also Search for Loughrigg Mountain, Brochole Zip World, Low Wood Watersports, Wray Castle ",
-      desc: "A panoramic hike with lake and fell views.",
-      coords: [54.4335341, -2.9743217],
-      image: "to-do/Loughrigg.jpeg"
-    }
+		
+{
+  "name": "Brockhole Zip World £",
+  "desc": "Experience the thrill of soaring through the trees at Brockhole Zip World, located within the Brockhole on Windermere Visitor Centre. Just a 15-minute walk (0.7 mi) from Lakeside Picnic, this adventure attraction offers a zip line course that provides stunning views of Lake Windermere and the surrounding fells. Suitable for both adults and children, the course includes multiple zip lines of varying lengths and heights, ensuring an exhilarating experience for all participants. Safety equipment and briefings are provided by trained staff. The attraction operates seasonally, so it's advisable to check opening times and book in advance.",
+  "coords": [54.4141927, -2.9551362],
+  "image": "to-do/Zip.jpeg"
+}
   ];
+		
+
 
   places.forEach(place => {
     const marker = L.marker(place.coords).addTo(map);
@@ -167,7 +229,10 @@
       <img src="to-do/Borrans.jpeg" class="img-fluid rounded" alt="Borrans Park">
     </div>
     <div class="col-md-4 mb-2">
-      <img src="https://via.placeholder.com/400x250?text=Stop+2" class="img-fluid rounded" alt="Ambleside">
+      <img src="to-do/Roman.jpeg" class="img-fluid rounded" alt="Ambleside">
+    </div>    
+    <div class="col-md-4 mb-2">
+      <img src="to-do/Ambleside.jpeg" class="img-fluid rounded" alt="StockGhyll Force">
     </div>
     <div class="col-md-4 mb-2">
       <img src="to-do/Stockghyll.jpeg" class="img-fluid rounded" alt="StockGhyll Force">
@@ -184,34 +249,45 @@
 <div class="container mt-4">
   <h3>2. Rydal Water & Cave</h3>
   <div id="routeMap2" style="height: 400px;" class="mb-3"></div>
-
+<div class="col-md-4 mb-2">
+      <img src="to-do/Borrans.jpeg" class="img-fluid rounded" alt="Rydal Water">
+    </div>
+		<div class="col-md-4 mb-2">
+      <img src="to-do/Roman.jpeg" class="img-fluid rounded" alt="Rydal Water">
+    </div>
   <div class="row">
     <div class="col-md-4 mb-2">
-      <img src="https://via.placeholder.com/400x250?text=Stop+1" class="img-fluid rounded" alt="Borrans Park">
+      <img src="to-do/Rothay.jpeg" class="img-fluid rounded" alt="Borrans Park">
     </div>
     <div class="col-md-4 mb-2">
-      <img src="https://via.placeholder.com/400x250?text=Stop+2" class="img-fluid rounded" alt="Lughrigg">
+      <img src="to-do/Rydalw.jpeg" class="img-fluid rounded" alt="Lughrigg">
     </div>
     <div class="col-md-4 mb-2">
-      <img src="https://via.placeholder.com/400x250?text=Stop+3" class="img-fluid rounded" alt="Rydal Water">
+      <img src="to-do/Cave.jpeg" class="img-fluid rounded" alt="Rydal Water">
     </div>
   </div>
 </div>
-
+<br>
+<br>
+<br>
+<br>
 <!-- Route 3 -->
 <div class="container mt-4">
-  <h3>3. Stagshaw Garden - Ambleside - Stock Ghyll Force Loop</h3>
+  <h3>3. Stagshaw Garden - Stock Ghyll Force</h3>
   <div id="routeMap3" style="height: 400px;" class="mb-2"></div>
 
   <div class="row">
     <div class="col-md-4 mb-2">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/7/77/Remains_of_Galava%2C_Ambleside.jpg" class="img-fluid rounded" alt="Roman Fort">
+      <img src="to-do/Garden.jpeg" class="img-fluid rounded" alt="Roman Fort">
     </div>
     <div class="col-md-4 mb-2">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Rothay_Park_-_geograph.org.uk_-_527972.jpg" class="img-fluid rounded" alt="Rothay Park">
+      <img src="to-do/Jenkin.jpeg" class="img-fluid rounded" alt="Rothay Park">
+    </div>
+		<div class="col-md-4 mb-2">
+      <img src="to-do/Ambleside.jpeg" class="img-fluid rounded" alt="Rothay Park">
     </div>
     <div class="col-md-4 mb-2">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e0/Stock_Ghyll_Force_-_geograph.org.uk_-_1930520.jpg" class="img-fluid rounded" alt="Borrans Park">
+      <img src="to-do/Stockghyll.jpeg" class="img-fluid rounded" alt="Borrans Park">
     </div>
   </div>
 </div>
@@ -236,17 +312,17 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 const waypoints = [
   L.latLng(54.4208134, -2.9624932),
   L.latLng(54.4215492, -2.9653692),
-  L.latLng(54.4319022, -2.9618420),
-  L.latLng(54.4327400, -2.9511095),
-  L.latLng(54.4208134, -2.9624932),
+  L.latLng(54.4223490, -2.9686860),
+	L.latLng(54.4319022, -2.9618420),
+  L.latLng(54.4327400, -2.9511095)
 ];
 
 const placeNames = [
-  '1. Lakeside Picnic',
+  '1. Lakeside Picnic (Starting Point)',
   '2. Borrans Park',
-  '3. Ambleside',
-  '4. Stock Ghyll Force Waterfall',
-  '1. Lakeside Picnic',
+	'3. Roman Fort (Galava)',
+  '4. Ambleside',
+  '5. Stock Ghyll Force Waterfall'
 ];
 
 L.Routing.control({
@@ -278,14 +354,36 @@ const waypoints2 = [
 ];
 
 const placeNames2 = [
-  'Lakeside Picnic - Start',
+  'Lakeside Picnic (Starting Point)',
   'Riverside - Off Road',
-  'you can Turn Right to see Rothay Park - or Continuo walk to Rydal',
+  'You can turn right to visit Rothay Park and the playground, or continue walking on to Rydal.',
   'Rydal',
   'To Rydal Water - Off Road',
   'Viewpoint - Continuo to the Cave',
   'Rydal Cave - End',
 ];
+
+// Add red circle for starting point
+L.circle([54.4215223, -2.9653919], {
+  color: 'green',
+  fillColor: 'green',
+  fillOpacity: 0.5,
+  radius: 30
+}).addTo(routeMap2).bindPopup("Borrans Park");
+
+	L.circle([54.4223455, -2.9686847], {
+  color: 'green',
+  fillColor: 'green',
+  fillOpacity: 0.5,
+  radius: 30
+}).addTo(routeMap2).bindPopup("Roman Fort (Galava)");
+
+L.circle([54.4312707, -2.9686971], {
+  color: 'green',
+  fillColor: 'green',
+  fillOpacity: 0.5,
+  radius: 50
+}).addTo(routeMap2).bindPopup("Rothay Park");
 
 L.Routing.control({
   waypoints: waypoints2,
@@ -306,15 +404,15 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(routeMap3);
 
 const waypoints3 = [
-  L.latLng(54.4208236, -2.9625049),  // Stagshaw
-  L.latLng(54.4160899, -2.9590646),  // Ambleside
-  L.latLng(54.4174465, -2.9565913),  // Waterfall
-  L.latLng(54.4197505, -2.9560699),  // Lakeside Point 2
-	L.latLng(54.4327599, -2.9511229),  // Lakeside Picnic
+  L.latLng(54.4208236, -2.9625049),  // 
+  L.latLng(54.4160899, -2.9590646),  // 
+  L.latLng(54.4174465, -2.9565913),  // 
+  L.latLng(54.4197509, -2.9560683),  // 
+	L.latLng(54.4327599, -2.9511229)
 ];
 
 const placeNames3 = [
-  '1. Lakeside Picnic - Start',
+  '1. Lakeside Picnic (Starting Point)',
   '2. Turn Left to - Stagshaw Garden',
   '3. Stagshaw Viewpoint',
   '4. To Ambleside Path',
@@ -334,10 +432,24 @@ L.Routing.control({
 }).addTo(routeMap3);
 </script>
 
-
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <!-- hitwebcounter Code START -->
-<a href="https://www.hitwebcounter.com" target="_blank">
-<img src="https://hitwebcounter.com/counter/counter.php?page=20574469&style=0040&nbdigits=5&type=page&initCount=1000" title="Counter Widget" Alt="Visit counter For Websites"   border="0" /></a>                      
+<div class="counter-wrapper">
+    <p class="counter-text">Visitors Since 1st May 2025</p>
+    <a href="https://www.hitwebcounter.com" target="_blank">
+      <img src="https://hitwebcounter.com/counter/counter.php?page=20574469&style=0040&nbdigits=5&type=page&initCount=1000" 
+           title="Counter Widget" 
+           alt="Visit counter For Websites" 
+           border="0" />
+    </a>
+  </div>                      
 
 </body>
 </html>

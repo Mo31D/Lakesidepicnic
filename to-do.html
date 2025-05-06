@@ -35,9 +35,59 @@
   <!-- Font Awesome CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-	
+   
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      padding-bottom: 60px;
+    }
+    #map {
+      height: 500px;
+    }    
+    
+    .list-group-item {
+      cursor: pointer;
+    }
+		.counter-wrapper {
+      text-align: center;
+      padding: 20px;
+      background: white;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .counter-wrapper img {
+      max-width: 100%;
+    }
+
+    .counter-text {
+      font-size: 9px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 15px;
+    }
+		.community-note {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.community-note h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.community-note p {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+  </style>
 </head>
-   <body>
+<body>
       <div class="header_section header_bg">
          <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -80,52 +130,9 @@
          </div>
       </div>
       <!-- header section end -->
-  <style>
-    body, html {
-      height: 100%;
-      margin: 0;
-      padding-bottom: 60px;
-    }
-    #map {
-      height: 500px;
-    }
-    .dark-mode {
-      background-color: #121212;
-      color: white;
-    }
-    .navbar.fixed-bottom {
-      background-color: #f8f9fa;
-      border-top: 1px solid #ccc;
-    }
-    .list-group-item {
-      cursor: pointer;
-    }
-		.counter-wrapper {
-      text-align: center;
-      padding: 20px;
-      background: white;
-      border: 2px solid #ccc;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    }
-
-    .counter-wrapper img {
-      max-width: 100%;
-    }
-
-    .counter-text {
-      font-size: 9px;
-      font-weight: bold;
-      color: #333;
-      margin-bottom: 15px;
-    }
-  </style>
-</head>
-<body>
 
 <div class="container mt-3">
-  <h1>Explore Ambleside: This Page is not ready yet!</h1>
-  <button onclick="toggleTheme()" class="btn btn-secondary mb-3">Toggle Dark Mode</button>
+  <h1> Explore Ambleside:</h1>
 
   <div id="map" class="mb-3"></div>
 
@@ -140,13 +147,6 @@
   const map = L.map('map').setView([54.4313, -2.9625], 13);
 		
 	
-// Add red circle for starting point
-L.circle([54.4208552, -2.9623681], {
-  color: 'red',
-  fillColor: '#f03',
-  fillOpacity: 0.5,
-  radius: 20
-}).addTo(map).bindPopup("Lakeside Picnic (Starting Point)");
 
 // Optional: also add a standard marker
 L.marker([54.4208552, -2.9623681]).addTo(map)
@@ -288,7 +288,9 @@ L.marker([54.4208552, -2.9623681]).addTo(map)
 
 
 
-
+<br>
+<br><br>
+<br>
 
 
 
@@ -307,13 +309,16 @@ L.marker([54.4208552, -2.9623681]).addTo(map)
     <div class="col-md-4 mb-2">
       <img src="to-do/Ambleside.jpeg" class="img-fluid rounded" alt="StockGhyll Force">
     </div>
+		<div class="col-md-4 mb-2">
+      <img src="to-do/Bridgeh.jpeg" class="img-fluid rounded" alt="StockGhyll Force">
+    </div>
     <div class="col-md-4 mb-2">
       <img src="to-do/Stockghyll.jpeg" class="img-fluid rounded" alt="StockGhyll Force">
     </div>
   </div>
 </div>
-
-
+<br>
+<br>
 <br>
 <br>
 <br>
@@ -340,6 +345,8 @@ L.marker([54.4208552, -2.9623681]).addTo(map)
     </div>
   </div>
 </div>
+<br>
+<br>
 <br>
 <br>
 <br>
@@ -386,7 +393,7 @@ const waypoints = [
   L.latLng(54.4208134, -2.9624932),
   L.latLng(54.4215492, -2.9653692),
   L.latLng(54.4223490, -2.9686860),
-	L.latLng(54.4319022, -2.9618420),
+	L.latLng(54.4331755, -2.9635281),
   L.latLng(54.4327400, -2.9511095)
 ];
 
@@ -394,7 +401,7 @@ const placeNames = [
   '1. Lakeside Picnic (Starting Point)',
   '2. Borrans Park',
 	'3. Roman Fort (Galava)',
-  '4. Ambleside',
+  '4. The Bridge House - Ambleside',
   '5. Stock Ghyll Force Waterfall'
 ];
 
@@ -513,9 +520,22 @@ L.Routing.control({
 <br>
 <br>
 <br>
+
+
+<section class="community-note">
+  <h2>A Note from Lakeside Picnic</h2>
+  <p>
+    This page is here to help everyone enjoy the beauty of Ambleside—whether you're a customer of Lakeside Picnic or simply exploring our village. We believe in sharing the best of what our community has to offer.
+  </p>
+  <p>
+    Think of it as a growing, open-source guide to Ambleside. If you'd like to suggest edits, contribute new locations, or share local tips, feel free to contact Mo at
+    <a href="mailto:mo@lakesidepicnic.co.uk">mo@lakesidepicnic.co.uk</a>.
+  </p>
+</section>
+
 <!-- hitwebcounter Code START -->
 <div class="counter-wrapper">
-    <p class="counter-text">Visitors Since 1st May 2025</p>
+    <p class="counter-text">Page visitors Since 1st May 2025</p>
     <a href="https://www.hitwebcounter.com" target="_blank">
       <img src="https://hitwebcounter.com/counter/counter.php?page=20574469&style=0040&nbdigits=5&type=page&initCount=1000" 
            title="Counter Widget" 
@@ -524,5 +544,6 @@ L.Routing.control({
     </a>
   </div>                      
 
+	
 </body>
 </html>

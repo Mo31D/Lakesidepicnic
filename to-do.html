@@ -129,7 +129,8 @@
 
 // Optional: also add a standard marker
 L.marker([54.4208552, -2.9623681]).addTo(map)
-  .bindPopup("<strong>Lakeside Picnic (Starting Point)</strong><br>You are here!");
+  .bindPopup("<strong>Lakeside Picnic (Starting Point)</strong><br>You are here!")
+  .openPopup();
 	
   L.tileLayer(`https://api.os.uk/maps/raster/v1/zxy/Road_3857/{z}/{x}/{y}.png?key=${apiKey}`, {
     maxZoom: 18,
@@ -238,13 +239,18 @@ L.marker([54.4208552, -2.9623681]).addTo(map)
 }
   ];
 		
-	L.circle([54.4208552, -2.9623681], {
-  color: '#427EC4',         // Border color
-  fillColor: '#427EC4',     // Fill color
-  fillOpacity: 0.5,     // Transparency
-  radius: 20            // In meters
-}).addTo(map)
-  .bindPopup("<strong>Lakeside Picnic (Starting Point)</strong><br>You are here!");
+	// Circle without openPopup (just visual highlight)
+L.circle([54.4208552, -2.9623681], {
+  color: '#427EC4',
+  fillColor: '#427EC4',
+  fillOpacity: 0.5,
+  radius: 20
+}).addTo(map);
+
+// Marker with popup that opens immediately
+L.marker([54.4208552, -2.9623681]).addTo(map)
+  .bindPopup("<strong>Lakeside Picnic (Starting Point)</strong><br>You are here!")
+  .openPopup();
 	
   places.forEach(place => {
   const marker = L.marker(place.coords).addTo(map);
@@ -505,7 +511,7 @@ L.marker([54.4208552, -2.9623681]).addTo(map)
     'to-do/Stockghyll.jpeg',
   ];
 
-  L.Routing.control({
+  const routeControl = L.Routing.control({
     waypoints: waypoints3,
     routeWhileDragging: false,
     show: false,
@@ -524,9 +530,16 @@ L.marker([54.4208552, -2.9623681]).addTo(map)
       return marker;
     }
   }).addTo(routeMap3);
+
+  // Open the Lakeside Picnic popup automatically on page load
+  routeControl.on('routesfound', function() {
+    // Trigger popup opening for the first waypoint (Lakeside Picnic)
+    const firstMarker = routeControl.getPlan().getWaypoints()[0].marker;
+    if (firstMarker) {
+      firstMarker.openPopup();
+    }
+  });
 </script>
-
-
 
 <br>
 <br>

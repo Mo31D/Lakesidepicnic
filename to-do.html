@@ -409,25 +409,34 @@ L.marker([54.4208552, -2.9623681]).addTo(map)
     'to-do/Stockghyll.jpeg'
   ];
 
-  L.Routing.control({
-    waypoints: waypoints,
-    routeWhileDragging: false,
-    show: false,
-    addWaypoints: false,
-    draggableWaypoints: false,
-    fitSelectedRoutes: true,
-    createMarker: function(i, waypoint, n) {
-      const marker = L.marker(waypoint.latLng);
-      const popupContent = `
-        <div style="max-width: 200px;">
-          ${placeNames[i]}<br>
-          <img src="${placeImages[i]}" alt="${placeNames[i]}" style="width: 100%; margin-top: 5px; border-radius: 4px;">
-        </div>
-      `;
-      marker.bindPopup(popupContent);
-      return marker;
+  const routingControl = L.Routing.control({
+  waypoints: waypoints,
+  routeWhileDragging: false,
+  show: false,
+  addWaypoints: false,
+  draggableWaypoints: false,
+  fitSelectedRoutes: true,
+  createMarker: function(i, waypoint, n) {
+    const marker = L.marker(waypoint.latLng);
+    const popupContent = `
+      <div style="max-width: 200px;">
+        ${placeNames[i]}<br>
+        <img src="${placeImages[i]}" alt="${placeNames[i]}" style="width: 100%; margin-top: 5px; border-radius: 4px;">
+      </div>
+    `;
+    marker.bindPopup(popupContent);
+
+    // Automatically open popup for the first marker
+    if (i === 0) {
+      marker.on('add', function () {
+        this.openPopup();
+      });
     }
-  }).addTo(routeMap);
+
+    return marker;
+  }
+}).addTo(routeMap);
+
 </script>
 
 <script>
@@ -491,24 +500,33 @@ L.marker([54.4208552, -2.9623681]).addTo(map)
 
   // Routing and Markers
   L.Routing.control({
-    waypoints: waypoints2,
-    routeWhileDragging: false,
-    show: false,
-    addWaypoints: false,
-    draggableWaypoints: false,
-    fitSelectedRoutes: true,
-    createMarker: function(i, waypoint, n) {
-      const marker = L.marker(waypoint.latLng);
-      const popupContent = `
-        <div style="max-width: 200px;">
-          ${placeNames2[i]}<br>
-          <img src="${placeImages2[i]}" alt="${placeNames2[i]}" style="width: 100%; margin-top: 5px; border-radius: 4px;">
-        </div>
-      `;
-      marker.bindPopup(popupContent);
-      return marker;
+  waypoints: waypoints2,
+  routeWhileDragging: false,
+  show: false,
+  addWaypoints: false,
+  draggableWaypoints: false,
+  fitSelectedRoutes: true,
+  createMarker: function(i, waypoint, n) {
+    const marker = L.marker(waypoint.latLng);
+    const popupContent = `
+      <div style="max-width: 200px;">
+        ${placeNames2[i]}<br>
+        <img src="${placeImages2[i]}" alt="${placeNames2[i]}" style="width: 100%; margin-top: 5px; border-radius: 4px;">
+      </div>
+    `;
+    marker.bindPopup(popupContent);
+
+    // Automatically open popup for the first marker (starting point)
+    if (i === 0) {
+      marker.on('add', function () {
+        this.openPopup();
+      });
     }
-  }).addTo(routeMap2);
+
+    return marker;
+  }
+}).addTo(routeMap2);
+
 </script>
 
 <script>

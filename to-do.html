@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	
+<head>	
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -268,24 +267,26 @@ L.marker([54.4208552, -2.9623681]).addTo(map)
   .bindPopup("<strong>Lakeside Picnic (Starting Point)</strong><br>You are here!");
 	
   places.forEach(place => {
-    const marker = L.marker(place.coords).addTo(map);
-    marker.bindPopup(`
-      <strong>${place.name}</strong><br>
-      <img src="${place.image}" alt="${place.name}" style="width:100%; max-height:150px; object-fit:cover; margin:6px 0;"><br>
-      ${place.desc}<br>
-      <a href="https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(place.name + ' Ambleside')}" target="_blank">Google Maps</a> |
-      <a href="http://maps.apple.com/?daddr=${encodeURIComponent(place.name + ' Ambleside')}" target="_blank">Apple Maps</a>
-    `);
+  const marker = L.marker(place.coords).addTo(map);
+  marker.bindPopup(`
+    <strong>${place.name}</strong><br>
+    <img src="${place.image}" alt="${place.name}" style="width:100%; max-height:150px; object-fit:cover; margin:6px 0;"><br>
+    ${place.desc}<br>
+    <a href="https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(place.name + ' Ambleside')}" target="_blank">Google Maps</a> |
+    <a href="http://maps.apple.com/?daddr=${encodeURIComponent(place.name + ' Ambleside')}" target="_blank">Apple Maps</a>
+  `);
 
-    const listItem = document.createElement("a");
-    listItem.className = "list-group-item list-group-item-action";
-    listItem.innerText = place.name;
-    listItem.onclick = () => {
-      map.setView(place.coords, 15);
-      marker.openPopup();
-    };
-    document.getElementById("locationList").appendChild(listItem);
-  });
+  const listItem = document.createElement("a");
+  listItem.className = "list-group-item list-group-item-action";
+  listItem.innerText = place.name;
+  listItem.onclick = () => {
+    map.setView(place.coords, 15);
+    marker.openPopup();
+    document.getElementById("map").scrollIntoView({ behavior: 'smooth' }); // <- This is the new line
+  };
+  document.getElementById("locationList").appendChild(listItem);
+});
+
 
   function toggleTheme() {
     document.body.classList.toggle('dark-mode');
@@ -303,7 +304,7 @@ L.marker([54.4208552, -2.9623681]).addTo(map)
 <!-- Route Planner Section 1 -->
 <div class="container mt-4">
   <h3>Suggested Walks From Lakeside Picnic: <br><br>1. Stock Ghyll Force Waterfall</h3>
-  <div id="routeMap" style="height: 400px;" class="mb-3"></div>
+  <div id="routeMap" style="height: 600px;" class="mb-3"></div>
 
 <!-- Dynamic Image Display for Route 1 -->
 <div id="routeImageContainer" class="text-center my-3">
@@ -361,206 +362,188 @@ L.marker([54.4208552, -2.9623681]).addTo(map)
 
 <script>
   // Route 1: Lakeside Picnic Loop
-const routeMap = L.map('routeMap').setView([54.42086, -2.96236], 13);
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution:
-    '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-}).addTo(routeMap);
+  const routeMap = L.map('routeMap').setView([54.42086, -2.96236], 13);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution:
+      '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+  }).addTo(routeMap);
 
-const waypoints = [
-  L.latLng(54.4208134, -2.9624932),
-  L.latLng(54.4215492, -2.9653692),
-  L.latLng(54.4223490, -2.9686860),
-	L.latLng(54.4331755, -2.9635281),
-  L.latLng(54.4327400, -2.9511095)
-];
+  const waypoints = [
+    L.latLng(54.4208134, -2.9624932),
+    L.latLng(54.4215492, -2.9653692),
+    L.latLng(54.4223490, -2.9686860),
+    L.latLng(54.4331755, -2.9635281),
+    L.latLng(54.4327400, -2.9511095)
+  ];
 
-const placeNames = [
-  'Lakeside Picnic (Starting Point)',
-  'Borrans Park - Peaceful lakeside spot with great views and Roman ruins — perfect for a relaxed walk or picnic. 3-minute walk from Lakeside Picnic',
-  'Roman Fort (Galava)- Ancient Roman fort ruins dating back nearly 2,000 years — open to the public and managed by the National Trust. 5-minute walk from Lakeside Picnic.',
-  'The Bridge House - Ambleside - Tiny 17th-century stone house over a stream — once an apple store, now a Lake District icon. One of Ambleside’s most photographed spots.<br> 4-minute drive <br> 23-minute walk from Lakeside Picnic.',
-  'Stock Ghyll Force Waterfall - Picturesque 70-foot waterfall with cascades and daffodils in spring. Easy trail with a viewing platform. Circular route through Stock Ghyll Woods.<br>15-minute drive <br> 34-minute walk from Lakeside Picnic.'
-];
+  const placeNames = [
+    'Lakeside Picnic (Starting Point)',
+    'Borrans Park - Peaceful lakeside spot with great views and Roman ruins — perfect for a relaxed walk or picnic. 3-minute walk from Lakeside Picnic',
+    'Roman Fort (Galava)- Ancient Roman fort ruins dating back nearly 2,000 years — open to the public and managed by the National Trust. 5-minute walk from Lakeside Picnic.',
+    'The Bridge House - Ambleside - Tiny 17th-century stone house over a stream — once an apple store, now a Lake District icon. One of Ambleside’s most photographed spots.<br> 4-minute drive <br> 23-minute walk from Lakeside Picnic.',
+    'Stock Ghyll Force Waterfall - Picturesque 70-foot waterfall with cascades and daffodils in spring. Easy trail with a viewing platform. Circular route through Stock Ghyll Woods.<br>15-minute drive <br> 34-minute walk from Lakeside Picnic.'
+  ];
 
-const placeImages = [
-  'to-do/Lakesidep.jpeg',
-  'to-do/Borrans.jpeg',
-  'to-do/Roman.jpeg',
-  'to-do/Bridgeh.jpeg',
-  'to-do/Stockghyll.jpeg'
-];
+  const placeImages = [
+    'to-do/Lakesidep.jpeg',
+    'to-do/Borrans.jpeg',
+    'to-do/Roman.jpeg',
+    'to-do/Bridgeh.jpeg',
+    'to-do/Stockghyll.jpeg'
+  ];
 
-L.Routing.control({
-  waypoints: waypoints,
-  routeWhileDragging: false,
-  show: false,
-  addWaypoints: false,
-  draggableWaypoints: false,
-  fitSelectedRoutes: true,
-  createMarker: function(i, waypoint, n) {
-    const marker = L.marker(waypoint.latLng);
-    marker.bindPopup(placeNames[i] || `Stop ${i}`);
-
-    marker.on('click', function () {
-      const img = document.getElementById('routeImage');
-      if (placeImages[i]) {
-        img.src = placeImages[i];
-        img.alt = placeNames[i];
-        img.style.display = 'block';
-      } else {
-        img.style.display = 'none';
-      }
-    });
-
-    return marker;
-  },
-}).addTo(routeMap);
-
+  L.Routing.control({
+    waypoints: waypoints,
+    routeWhileDragging: false,
+    show: false,
+    addWaypoints: false,
+    draggableWaypoints: false,
+    fitSelectedRoutes: true,
+    createMarker: function(i, waypoint, n) {
+      const marker = L.marker(waypoint.latLng);
+      const popupContent = `
+        <div style="max-width: 200px;">
+          ${placeNames[i]}<br>
+          <img src="${placeImages[i]}" alt="${placeNames[i]}" style="width: 100%; margin-top: 5px; border-radius: 4px;">
+        </div>
+      `;
+      marker.bindPopup(popupContent);
+      return marker;
+    }
+  }).addTo(routeMap);
 </script>
+
 <script>
-// Route 2: Rydal Round
-const routeMap2 = L.map('routeMap2').setView([54.4370, -3.0168], 13);
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-}).addTo(routeMap2);
+  // Route 2: Rydal Round
+  const routeMap2 = L.map('routeMap2').setView([54.4370, -3.0168], 13);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+  }).addTo(routeMap2);
 
-const waypoints2 = [
-  L.latLng(54.4208218, -2.9625096),   // Lakeside Picnic
-  L.latLng(54.4265827, -2.9695977),   // Riverside
-  L.latLng(54.4318404, -2.9712315),   // Rothay Park
-  L.latLng(54.4449891, -2.9789646),   // Rydal
-  L.latLng(54.4456921, -2.9858653),   // To Rydal Water
-  L.latLng(54.4442949, -2.9918670),   // Viewpoint
-  L.latLng(54.4433009, -2.9964583),   // Rydal Cave
-];
+  const waypoints2 = [
+    L.latLng(54.4208218, -2.9625096),   // Lakeside Picnic
+    L.latLng(54.4265827, -2.9695977),   // Riverside
+    L.latLng(54.4318404, -2.9712315),   // Rothay Park
+    L.latLng(54.4449891, -2.9789646),   // Rydal
+    L.latLng(54.4456921, -2.9858653),   // To Rydal Water
+    L.latLng(54.4442949, -2.9918670),   // Viewpoint
+    L.latLng(54.4433009, -2.9964583),   // Rydal Cave
+  ];
 
-const placeNames2 = [
-  'Lakeside Picnic (Starting Point)',
-  'Under Loughrigg - Off Road',
-  'You can turn right to visit Rothay Park and the playground, or continue walking on to Rydal.',
-  'Rydal',
-  'To Rydal Water - Off Road',
-  'Viewpoint - Continue to the Cave',
-  'Rydal Cave - End',
-];
+  const placeNames2 = [
+    'Lakeside Picnic (Starting Point)',
+    'Under Loughrigg - Off Road',
+    'You can turn right to visit Rothay Park and the playground, or continue walking on to Rydal.',
+    'Rydal',
+    'To Rydal Water - Off Road',
+    'Viewpoint - Continue to the Cave',
+    'Rydal Cave - End',
+  ];
 
-const placeImages2 = [
-  'to-do/Lakesidep.jpeg',
-  'to-do/Underl.jpeg',
-  'to-do/Rothay.jpeg',
-  'to-do/Rydal.jpeg',
-  'to-do/Rydalw.jpeg',
-  'to-do/Rydalw.jpeg',
-  'to-do/Cave.jpeg'
-];
+  const placeImages2 = [
+    'to-do/Lakesidep.jpeg',
+    'to-do/Underl.jpeg',
+    'to-do/Rothay.jpeg',
+    'to-do/Rydal.jpeg',
+    'to-do/Rydalw.jpeg',
+    'to-do/Rydalw.jpeg',
+    'to-do/Cave.jpeg'
+  ];
 
-// Add green markers
-L.circle([54.4215223, -2.9653919], {
-  color: '#427EC4',
-  fillColor: '#427EC4',
-  fillOpacity: 0.5,
-  radius: 30
-}).addTo(routeMap2).bindPopup("Borrans Park");
+  // Add extra highlight circles
+  L.circle([54.4215223, -2.9653919], {
+    color: '#427EC4',
+    fillColor: '#427EC4',
+    fillOpacity: 0.5,
+    radius: 30
+  }).addTo(routeMap2).bindPopup("Borrans Park");
 
-L.circle([54.4223455, -2.9686847], {
-  color: '#427EC4',
-  fillColor: '#427EC4',
-  fillOpacity: 0.5,
-  radius: 30
-}).addTo(routeMap2).bindPopup("Roman Fort (Galava)");
+  L.circle([54.4223455, -2.9686847], {
+    color: '#427EC4',
+    fillColor: '#427EC4',
+    fillOpacity: 0.5,
+    radius: 30
+  }).addTo(routeMap2).bindPopup("Roman Fort (Galava)");
 
-L.circle([54.4312707, -2.9686971], {
-  color: '#427EC4',
-  fillColor: '#427EC4',
-  fillOpacity: 0.5,
-  radius: 50
-}).addTo(routeMap2).bindPopup("Rothay Park");
+  L.circle([54.4312707, -2.9686971], {
+    color: '#427EC4',
+    fillColor: '#427EC4',
+    fillOpacity: 0.5,
+    radius: 50
+  }).addTo(routeMap2).bindPopup("Rothay Park");
 
-// Routing and Markers
-L.Routing.control({
-  waypoints: waypoints2,
-  routeWhileDragging: false,
-  show: false,
-  addWaypoints: false,
-  draggableWaypoints: false,
-  fitSelectedRoutes: true,
-  createMarker: function(i, waypoint, n) {
-    const marker = L.marker(waypoint.latLng);
-    marker.bindPopup(placeNames2[i] || `Stop ${i}`);
-
-    marker.on('click', function () {
-      const img = document.getElementById('routeImage2');
-      if (placeImages2[i]) {
-        img.src = placeImages2[i];
-        img.alt = placeNames2[i];
-        img.style.display = 'block';
-      } else {
-        img.style.display = 'none';
-      }
-    });
-
-    return marker;
-  },
-}).addTo(routeMap2);
-
+  // Routing and Markers
+  L.Routing.control({
+    waypoints: waypoints2,
+    routeWhileDragging: false,
+    show: false,
+    addWaypoints: false,
+    draggableWaypoints: false,
+    fitSelectedRoutes: true,
+    createMarker: function(i, waypoint, n) {
+      const marker = L.marker(waypoint.latLng);
+      const popupContent = `
+        <div style="max-width: 200px;">
+          ${placeNames2[i]}<br>
+          <img src="${placeImages2[i]}" alt="${placeNames2[i]}" style="width: 100%; margin-top: 5px; border-radius: 4px;">
+        </div>
+      `;
+      marker.bindPopup(popupContent);
+      return marker;
+    }
+  }).addTo(routeMap2);
 </script>
+
 <script>
-// Route 3: Roman Fort Loop
-const routeMap3 = L.map('routeMap3').setView([54.4279, -2.9642], 14);
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: '&copy; OpenStreetMap contributors',
-}).addTo(routeMap3);
+  // Route 3: Roman Fort Loop
+  const routeMap3 = L.map('routeMap3').setView([54.4279, -2.9642], 14);
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors',
+  }).addTo(routeMap3);
 
-const waypoints3 = [
-  L.latLng(54.4208236, -2.9625049),  // Lakeside Picnic
-  L.latLng(54.4160899, -2.9590646),  // Toward Stagshaw Garden
-  L.latLng(54.4174465, -2.9565913),  // Stagshaw Viewpoint
-  L.latLng(54.4197509, -2.9560683),  // Ambleside Path
-  L.latLng(54.4327599, -2.9511229),  // Stock Ghyll Force
-];
+  const waypoints3 = [
+    L.latLng(54.4208236, -2.9625049),  // Lakeside Picnic
+    L.latLng(54.4160899, -2.9590646),  // Toward Stagshaw Garden
+    L.latLng(54.4174465, -2.9565913),  // Stagshaw Viewpoint
+    L.latLng(54.4197509, -2.9560683),  // Ambleside Path
+    L.latLng(54.4327599, -2.9511229),  // Stock Ghyll Force
+  ];
 
-const placeNames3 = [
-  '1. Lakeside Picnic (Starting Point)',
-  '2. Turn Left to - Stagshaw Garden',
-  '3. Stagshaw Viewpoint',
-  '4. To Ambleside',
-  '5. Stock Ghyll Force Waterfall - Picturesque 70-foot waterfall with cascades and daffodils in spring. Easy trail with a viewing platform. Circular route through Stock Ghyll Woods.<br>15-minute drive',
-];
+  const placeNames3 = [
+    '1. Lakeside Picnic (Starting Point)',
+    '2. Turn Left to - Stagshaw Garden',
+    '3. Stagshaw Viewpoint',
+    '4. To Ambleside',
+    '5. Stock Ghyll Force Waterfall - Picturesque 70-foot waterfall with cascades and daffodils in spring. Easy trail with a viewing platform. Circular route through Stock Ghyll Woods.<br>15-minute drive',
+  ];
 
-const placeImages3 = [
-  'to-do/Lakesidep.jpeg',
-  'to-do/Garden.jpeg',
-  'to-do/Garden2.jpeg',
-  'to-do/Jenkin.jpeg',
-  'to-do/Stockghyll.jpeg',
-];
+  const placeImages3 = [
+    'to-do/Lakesidep.jpeg',
+    'to-do/Garden.jpeg',
+    'to-do/Garden2.jpeg',
+    'to-do/Jenkin.jpeg',
+    'to-do/Stockghyll.jpeg',
+  ];
 
-L.Routing.control({
-  waypoints: waypoints3,
-  routeWhileDragging: false,
-  show: false,
-  addWaypoints: false,
-  draggableWaypoints: false,
-  fitSelectedRoutes: true,
-  createMarker: function(i, waypoint, n) {
-    const marker = L.marker(waypoint.latLng);
-    marker.bindPopup(placeNames3[i] || `Stop ${i}`);
-
-    marker.on('click', function () {
-      const img = document.getElementById('routeImage3');
-      if (placeImages3[i]) {
-        img.src = placeImages3[i];
-        img.alt = placeNames3[i];
-        img.style.display = 'block';
-      } else {
-        img.style.display = 'none';
-      }
-    });
-
-    return marker;
-  },
-}).addTo(routeMap3);
+  L.Routing.control({
+    waypoints: waypoints3,
+    routeWhileDragging: false,
+    show: false,
+    addWaypoints: false,
+    draggableWaypoints: false,
+    fitSelectedRoutes: true,
+    createMarker: function(i, waypoint, n) {
+      const marker = L.marker(waypoint.latLng);
+      const popupContent = `
+        <div style="max-width: 200px;">
+          ${placeNames3[i]}<br>
+          <img src="${placeImages3[i]}" alt="${placeNames3[i]}" style="width: 100%; margin-top: 5px; border-radius: 4px;">
+        </div>
+      `;
+      marker.bindPopup(popupContent);
+      return marker;
+    }
+  }).addTo(routeMap3);
 </script>
 
 

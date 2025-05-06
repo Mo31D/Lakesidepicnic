@@ -144,7 +144,7 @@
 <script>
   const apiKey = "5nLkA3mxTaA446LXiRMbw9fh5JkK6Lg6";
 
-  const map = L.map('map').setView([54.4313, -2.9625], 13);
+  const map = L.map('map').setView([54.4208552, -2.9623681], 13.5);
 		
 	
 
@@ -259,8 +259,14 @@ L.marker([54.4208552, -2.9623681]).addTo(map)
 }
   ];
 		
-
-
+	L.circle([54.4208552, -2.9623681], {
+  color: 'red',         // Border color
+  fillColor: 'red',     // Fill color
+  fillOpacity: 0.5,     // Transparency
+  radius: 20            // In meters
+}).addTo(map)
+  .bindPopup("<strong>Lakeside Picnic (Starting Point)</strong><br>You are here!");
+	
   places.forEach(place => {
     const marker = L.marker(place.coords).addTo(map);
     marker.bindPopup(`
